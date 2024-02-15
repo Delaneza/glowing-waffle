@@ -27,8 +27,8 @@
       "@src/*": [
         "src/*"
       ],
-      "@app/*": [
-        "src/api-or-app/*"
+      "@api/*": [
+        "src/api/*"
       ],
     },
   }

@@ -7,5 +7,6 @@ export const config = {
     options: {
       debug: false
     }
-  }
+  },
+  postgres: {}
 }

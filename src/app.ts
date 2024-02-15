@@ -9,8 +9,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import multer from 'multer';
 import { errorHandler as queryErrorHandler } from "querymen";
+import { routes } from "./api/routes";
 import { AppErrorHandling } from "./middlewares/error-handling.middleware";
-import { routes } from "./routes";
 
 const app: Express = express();
 const env = config.env;
