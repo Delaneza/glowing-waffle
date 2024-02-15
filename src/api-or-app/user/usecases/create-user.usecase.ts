@@ -1,7 +1,7 @@
-import { AppError, makeAppError } from '@core/errors/app-error';
-import { Either, left, right } from '@core/errors/either';
-import { User } from "@domain/models/user.model";
+import { AppError, makeAppError } from '@shared/errors/app-error';
+import { Either, left, right } from '@shared/errors/either';
 import { Document } from "mongoose";
+import { User } from '../user.model';
 
 export type CreateUserDTO = {
   email: string;
@@ -29,8 +29,3 @@ export class CreateUserUsecase {
     return right(user);
   }
 }
-
-// export async function createUser(data: CreateUserDTO): Promise<Document> {
-//   const user = await User.create(data);
-//   return user
-// }

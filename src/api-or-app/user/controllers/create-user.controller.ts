@@ -1,7 +1,8 @@
+import { clientError, created } from "@shared/http/http-responses";
+import { Controller } from "@shared/interfaces/controller.interface";
 import { Request, Response } from "express";
-import { CreateUserUsecase } from "src/@core/app/usecases/users/create.usecase";
-import { clientError, created, fail } from "../../http-responses";
-import { Controller } from "../controller.interface";
+import { CreateUserUsecase } from "../usecases";
+
 
 export class CreateUserController implements Controller {
   constructor(

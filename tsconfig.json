@@ -18,20 +18,17 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@domain/*": [
-        "src/@core/domain/*"
-      ],
-      "@app/*": [
-        "src/@core/app/*"
-      ],
       "@infra/*": [
         "src/infra/*"
       ],
-      "@core/*": [
-        "src/@core/*"
-      ],
       "@shared/*": [
-        "src/infra/@shared/*"
+        "src/@shared/*"
+      ],
+      "@src/*": [
+        "src/*"
+      ],
+      "@app/*": [
+        "src/api-or-app/*"
       ],
     },
   }
