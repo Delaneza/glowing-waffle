@@ -1,3 +1,4 @@
+import { swagger } from "@docs/swagger";
 import { config } from "@shared/config";
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -8,6 +9,7 @@ import forceSSL from 'express-force-ssl';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import multer from 'multer';
+import swaggerUi from 'swagger-ui-express';
 import { routes } from "./api/routes";
 import { AppErrorHandling } from "./middlewares/error-handling.middleware";
 
@@ -48,6 +50,12 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 app.use(upload.single('file'))
 app.disable('x-powered-by')
+
+/**
+ * Set up static files and docs
+ */
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swagger))
 
 /**
  * Set up routes
