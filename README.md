@@ -1,6 +1,6 @@
 [ ] - middleware para validação dos dados do body/query
 
-[ ] - configurar jest
+[x] - configurar jest
 
 [ ] - validação de erros com o mongo no caso de uso
 
