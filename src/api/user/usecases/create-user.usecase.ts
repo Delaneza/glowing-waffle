@@ -22,6 +22,8 @@ export class CreateUserUsecase {
         status: 400
       })
 
+      // throw new AppError(error);
+
       return left(error);
     }
 

@@ -3,7 +3,7 @@ import { CreateUserUsecase } from "../usecases";
 describe('create user usecase', () => {
   let usecase: CreateUserUsecase
 
-  beforeEach(() => {
+  beforeEach(async () => {
     usecase = new CreateUserUsecase()
   })
 
