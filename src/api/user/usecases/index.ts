@@ -1,5 +1,5 @@
-import { CreateUserUsecase } from "./create-user.usecase";
+import { CreateUserUseCase } from "./create-user.usecase";
 
 export {
-  CreateUserUsecase
+  CreateUserUseCase
 };

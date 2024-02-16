@@ -1,91 +1,38 @@
-export type HttpResponse = {
-  statusCode: number
-  body: any
+import { Response } from 'express'
+
+export function ok<T>(res: Response, dto?: T) {
+  return res.status(200).json(dto)
 }
 
-export function ok<T>(dto?: T): HttpResponse {
-  return {
-    statusCode: 200,
-    body: dto,
-  }
+export function noContent<T>(res: Response, result?: T) {
+  return res.status(204).json(result)
 }
 
-export function noContent<T>(result?: T): HttpResponse {
-  return {
-    statusCode: 204,
-    body: result,
-  }
+export function created<T>(res: Response, result?: T) {
+  return res.status(201).json(result)
 }
 
-export function created<T>(result?: T): HttpResponse {
-  return {
-    statusCode: 201,
-    body: result,
-  }
+export function clientError(res: Response, error: any) {
+  return res.status(400).json(error)
 }
 
-export function clientError(error: any): HttpResponse {
-  return {
-    statusCode: error.status,
-    body: {
-      error: error.message,
-      name: error.name,
-    },
-  }
+export function notFound(res: Response, error: Error) {
+  return res.status(404).json({ error: error.message })
 }
 
-export function unauthorized(error: Error): HttpResponse {
-  return {
-    statusCode: 401,
-    body: {
-      error: error.message,
-    },
-  }
+export function conflict(res: Response, error: Error) {
+  return res.status(409).json({ error: error.message })
 }
 
-export function forbidden(error: Error): HttpResponse {
-  return {
-    statusCode: 403,
-    body: {
-      error: error.message,
-    },
-  }
+export function tooMany(res: Response, error: Error) {
+  return res.status(429).json({ error: error.message })
 }
 
-export function notFound(error: Error): HttpResponse {
-  return {
-    statusCode: 404,
-    body: {
-      error: error.message,
-    },
-  }
-}
+export function fail(res: Response, error: Error) {
+  console.error(error)
 
-export function conflict(error: Error): HttpResponse {
-  return {
-    statusCode: 409,
-    body: {
-      error: error.message,
-    },
-  }
-}
-
-export function tooMany(error: Error): HttpResponse {
-  return {
-    statusCode: 429,
-    body: {
-      error: error.message,
-    },
-  }
-}
-
-export function fail(error: Error) {
-  console.log(error)
-
-  return {
-    statusCode: 500,
-    body: {
-      error: error.message,
-    },
-  }
+  return res.status(500).json({
+    error: error.message,
+    stack: error.stack
+  })
 }

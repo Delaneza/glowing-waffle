@@ -1,14 +1,13 @@
 import { config } from "@shared/config";
 import bodyParser from 'body-parser';
-import { errorHandler as bodyErrorHandler } from "bodymen";
 import compression from 'compression';
 import cors from 'cors';
+import 'dotenv/config';
 import express, { Express } from 'express';
 import forceSSL from 'express-force-ssl';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import multer from 'multer';
-import { errorHandler as queryErrorHandler } from "querymen";
 import { routes } from "./api/routes";
 import { AppErrorHandling } from "./middlewares/error-handling.middleware";
 
@@ -60,8 +59,6 @@ app.use(routes)
  * Set up error handling
  */
 
-app.use(queryErrorHandler())
-app.use(bodyErrorHandler())
 app.use(AppErrorHandling)
 
 export { app };

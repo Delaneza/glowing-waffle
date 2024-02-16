@@ -1,11 +1,13 @@
-import { Response } from "express"
+import { conflict, fail } from "@shared/http/http-responses"
+import { NextFunction, Request, Response } from "express"
 
-export function AppErrorHandling(err: any, _: any, res: Response) {
+export function AppErrorHandling(err: Error, req: Request, res: Response, next: NextFunction) {
   console.error(err)
 
-  if (err.errors) {
-    return res.status(400).send(err.errors)
-  } else {
-    return res.status(500).send('Internal server error')
+  switch (err.constructor.name) {
+    case "UserAlreadyExistsError":
+      return conflict(res, err)
+    default:
+      return fail(res, err)
   }
 }

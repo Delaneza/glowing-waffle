@@ -18,8 +18,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@infra/*": [
-        "src/infra/*"
+      "@services/*": [
+        "src/services/*"
       ],
       "@shared/*": [
         "src/@shared/*"
@@ -29,7 +29,7 @@
       ],
       "@api/*": [
         "src/api/*"
-      ],
-    },
+      ]
+    }
   }
 }

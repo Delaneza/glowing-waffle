@@ -1,7 +1,5 @@
-import { AppError, makeAppError } from '@shared/errors/app-error';
-import { Either, left, right } from '@shared/errors/either';
-import { Document } from "mongoose";
-import { User } from '../user.model';
+import { UserAlreadyExistsError } from '@shared/errors/user-already-exists.error';
+import { User, UserDocument } from '../user.model';
 
 export type CreateUserDTO = {
   email: string;
@@ -9,25 +7,14 @@ export type CreateUserDTO = {
   name: string;
 };
 
-export type CreateUserResponse = Either<AppError, Document>
+export async function CreateUserUseCase(data: CreateUserDTO): Promise<UserDocument> {
+  const userAlreadyExists = await User.findOne({ email: data.email });
 
-export class CreateUserUsecase {
-  async execute(data: CreateUserDTO): Promise<CreateUserResponse> {
-    const userAlreadyExists = await User.findOne({ email: data.email });
-
-    if (userAlreadyExists) {
-      const error = makeAppError({
-        message: "User already exists",
-        name: "UserAlreadyExistsError",
-        status: 400
-      })
-
-      // throw new AppError(error);
-
-      return left(error);
-    }
-
-    const user = await User.create(data);
-    return right(user);
+  if (userAlreadyExists) {
+    throw new UserAlreadyExistsError(data.email);
   }
+
+  const user = await User.create(data)
+
+  return user.view(false);
 }

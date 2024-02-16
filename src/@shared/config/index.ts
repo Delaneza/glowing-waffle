@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 export const config = {
   env: process.env.NODE_ENV || "dev",
   host: process.env.HOST || "localhost",

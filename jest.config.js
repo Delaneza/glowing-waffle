@@ -7,7 +7,7 @@ module.exports = {
   testEnvironment: 'node',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   modulePaths: ['<rootDir>'],
-  testRegex: '((\\.|/)(spec))\\.(jsx?|tsx?)$',
+  testRegex: '((\\.|/)(spec))\\.(js?|ts?)$',
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
