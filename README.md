@@ -1,4 +1,4 @@
-[X] - middleware para validação dos dados do body/query
+[ ] - middleware para validação dos dados do body/query
 
 [X] - configurar jest
 

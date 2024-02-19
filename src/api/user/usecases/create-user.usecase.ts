@@ -1,4 +1,4 @@
-import { UserAlreadyExistsError } from '@shared/errors/user-already-exists.error';
+import { AppError } from '@shared/errors/app-error.error';
 import { User, UserDocument } from '../user.model';
 
 export type CreateUserDTO = {
@@ -11,7 +11,11 @@ export async function CreateUserUseCase(data: CreateUserDTO): Promise<UserDocume
   const userAlreadyExists = await User.findOne({ email: data.email });
 
   if (userAlreadyExists) {
-    throw new UserAlreadyExistsError(data.email);
+    throw new AppError({
+      message: 'User already exists',
+      name: 'UserAlreadyExistsError',
+      statusCode: 409
+    });
   }
 
   const user = await User.create(data)

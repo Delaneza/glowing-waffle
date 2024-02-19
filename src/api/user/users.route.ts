@@ -1,4 +1,6 @@
-import { CreateUserController } from '@src/api/user/controllers/create-user.controller';
+import { adaptRoute } from '@shared/http/route-adapter';
+import { CreateUserController, CreateUserDTO } from '@src/api/user/controllers/create-user.controller';
+import { BodyValidator } from '@src/middlewares/body-validator.middleware';
 import express, { Router } from 'express';
 
 const userRoutes: Router = express.Router();
@@ -63,7 +65,7 @@ const userRoutes: Router = express.Router();
  *                   type: string
  *                   description: Tipo de erro
  */
-userRoutes.post("/", CreateUserController);
+userRoutes.post("/", BodyValidator(CreateUserDTO), adaptRoute(CreateUserController));
 
 /**
  * @openapi
@@ -109,6 +111,6 @@ userRoutes.post("/", CreateUserController);
  *                   type: string
  *                   description: Tipo de erro
  */
-userRoutes.get("/", (req, res) => { })
+userRoutes.get("/");
 
 export { userRoutes };
