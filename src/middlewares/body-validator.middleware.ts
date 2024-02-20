@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Joi from 'joi';
 
-interface Schema {
+type Schema = {
   validate(value: any, options?: Joi.ValidationOptions): Joi.ValidationResult;
 }
 

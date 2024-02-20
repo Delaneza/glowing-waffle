@@ -1,4 +1,4 @@
-[ ] - middleware para validação dos dados do body/query
+[X] - middleware para validação dos dados do body/query
 
 [X] - configurar jest
 
@@ -7,3 +7,15 @@
 [ ] - estudar aplicação de libs de documentação
 
 [X] - estudar error handling na aplicação
+
+
+##########
+
+
+Mini Simulador:
+
+- Usuarios
+- Cenarios
+- AWS SES, SQS & S3
+- Simulações
+- Schedules

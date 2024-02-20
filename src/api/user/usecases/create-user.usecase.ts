@@ -12,7 +12,7 @@ export async function CreateUserUseCase(data: CreateUserDTO): Promise<UserDocume
 
   if (userAlreadyExists) {
     throw new AppError({
-      message: 'User already exists',
+      message: `User already exists with email: '${data.email}'`,
       name: 'UserAlreadyExistsError',
       statusCode: 409
     });
