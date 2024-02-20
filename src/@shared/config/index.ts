@@ -1,5 +1,7 @@
 import 'dotenv/config';
 
+const SEVEN_DAYS = 60 * 60 * 24 * 7;
+
 export const config = {
   env: process.env.NODE_ENV || "dev",
   host: process.env.HOST || "localhost",
@@ -10,5 +12,7 @@ export const config = {
       debug: false
     }
   },
-  postgres: {}
+  postgres: {},
+  sessionTimeout: SEVEN_DAYS,
+  JWTSecret: process.env.JWT_SECRET
 }
