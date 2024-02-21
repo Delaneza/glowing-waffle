@@ -13,6 +13,6 @@ export const config = {
     }
   },
   postgres: {},
-  sessionTimeout: SEVEN_DAYS,
+  sessionTimeout: 60,
   JWTSecret: process.env.JWT_SECRET
 }

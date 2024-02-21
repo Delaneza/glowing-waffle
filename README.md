@@ -8,14 +8,12 @@
 
 [X] - estudar error handling na aplicação
 
-
 ##########
-
 
 Mini Simulador:
 
 - Usuarios
 - Cenarios
-- AWS SES, SQS & S3
 - Simulações
 - Schedules
+- AWS SES, SQS & S3

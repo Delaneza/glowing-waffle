@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 require('ts-node').register({
   transpileOnly: true,
 });
@@ -14,7 +13,7 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   modulePaths: ['<rootDir>'],
   testRegex: '((\\.|/)(spec))\\.(js?|ts?)$',
-  setupFilesAfterEnv: ["./tests/unit-setup.ts"],
+  setupFilesAfterEnv: ["./tests/global-setup.ts"],
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',

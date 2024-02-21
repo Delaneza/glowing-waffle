@@ -32,7 +32,12 @@ export async function EnsureAuthenticated(
       return next()
     } catch (err) {
       console.error(err)
-      return forbidden(res, err)
+
+      return res.status(403).json({
+        message: 'Invalid token',
+        name: 'Unauthorized',
+        statusCode: 403
+      })
     }
   } catch (error) {
     return next(error)

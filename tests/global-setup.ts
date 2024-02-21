@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeAll } from '@jest/globals';
-import { mongoose } from '@services/database/mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import { mongoose } from '../src/services/database/mongoose';
 
 let mongodbMemoryServer: MongoMemoryServer
 

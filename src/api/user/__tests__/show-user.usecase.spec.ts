@@ -25,6 +25,6 @@ describe('show user usecase', () => {
 
   it('should throw if user does not exist', async () => {
     const invalidId = new mongoose.Types.ObjectId().toHexString()
-    await expect(ShowUserUseCase(invalidId)).rejects.toThrowError(`User not found with id: \'${invalidId}\'`)
+    await expect(ShowUserUseCase(invalidId)).rejects.toThrow(`User not found with id: \'${invalidId}\'`)
   })
 })
