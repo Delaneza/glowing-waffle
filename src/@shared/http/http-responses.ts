@@ -1,3 +1,4 @@
+import { AppError } from '@shared/errors/app-error.error'
 import { Response } from 'express'
 
 export function ok<T>(res: Response, dto?: T) {
@@ -34,5 +35,12 @@ export function fail(res: Response, error: Error) {
   return res.status(500).json({
     error: error.message,
     stack: error.stack
+  })
+}
+
+export function forbidden(res: Response, error: AppError) {
+  return res.status(error.statusCode).json({
+    message: error.message,
+    name: error.name
   })
 }

@@ -1,4 +1,4 @@
-import { app } from "@infra/http/app"
+import { app } from "@src/app"
 import supertest from 'supertest'
 
 describe('create user controller', () => {

@@ -1,21 +1,7 @@
-import { mongoose } from "@services/database/mongoose";
-import { config } from "@shared/config";
 import { CreateUserUseCase } from "../usecases";
 import { User } from "../user.model";
 
 describe('create user usecase', () => {
-  beforeAll(async () => {
-    mongoose.connect(config.mongodb.uri)
-  })
-
-  beforeEach(async () => {
-    await User.deleteMany({})
-  })
-
-  afterAll(async () => {
-    await mongoose.disconnect()
-  })
-
   it('should create a user', async () => {
     const user = await CreateUserUseCase({
       name: 'John Doe',
