@@ -69,8 +69,6 @@ const userRoutes: Router = express.Router();
  */
 userRoutes.post("/", BodyValidator(CreateUserDTO), adaptRoute(CreateUserController));
 
-userRoutes.use(EnsureAuthenticated)
-
 /**
  * @openapi
  * /users:
@@ -115,6 +113,6 @@ userRoutes.use(EnsureAuthenticated)
  *                   type: string
  *                   description: Tipo de erro
  */
-userRoutes.get("/me", adaptRoute(ShowUserController));
+userRoutes.get("/me", EnsureAuthenticated, adaptRoute(ShowUserController));
 
 export { userRoutes };
