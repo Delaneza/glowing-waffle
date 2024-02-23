@@ -13,6 +13,12 @@ export const config = {
     }
   },
   postgres: {},
-  sessionTimeout: 60,
-  JWTSecret: process.env.JWT_SECRET
+  sessionTimeout: SEVEN_DAYS,
+  JWTSecret: process.env.JWT_SECRET,
+  simulationsS3Bucket: {
+    bucket: process.env.SIMULATIONS_S3_BUCKET,
+    region: process.env.SIMULATIONS_S3_REGION,
+    accessKeyId: process.env.SIMULATIONS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.SIMULATIONS_S3_SECRET_ACCESS_KEY,
+  }
 }

@@ -7,6 +7,8 @@ export type ScenarioDocument = {
   name: string;
   lastSimulation: string;
   simulated: boolean;
+  createdAt: Date;
+  updatedAt: Date;
   view(full: boolean): any;
 }
 
@@ -45,6 +47,8 @@ scenarioSchema.methods = {
       name: this.name,
       lastSimulation: this.lastSimulation,
       simulated: this.simulated,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
     };
 
     return full
