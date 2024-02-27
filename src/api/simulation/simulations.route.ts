@@ -2,9 +2,8 @@ import { adaptRoute } from "@shared/http/route-adapter";
 import { BodyValidator } from "@src/middlewares/body-validator.middleware";
 import { EnsureAuthenticated } from "@src/middlewares/ensure-authenticated.middleware";
 import { Router } from "express";
-import { CreateSimulationController } from "./controllers";
+import { CreateSimulationController, ListSimulationsController, ShowSimulationController } from "./controllers";
 import { CreateSimulationDTO } from "./controllers/create-simulation.controller";
-import { ListSimulationsController } from "./controllers/list-simulations.controller";
 
 const simulationRoutes: Router = Router();
 
@@ -19,6 +18,12 @@ simulationRoutes.get(
   '/',
   EnsureAuthenticated,
   adaptRoute(ListSimulationsController)
+);
+
+simulationRoutes.get(
+  '/:id',
+  EnsureAuthenticated,
+  adaptRoute(ShowSimulationController)
 );
 
 export { simulationRoutes };
