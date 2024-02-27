@@ -1,6 +1,6 @@
 import { AppError } from "@shared/errors/app-error.error";
 import { Scenario, ScenarioDocument } from "../scenario.module";
-import { DEFAULT_ERRORS } from "./errors";
+import { DEFAULT_ERRORS } from "./_errors";
 
 export type ShowScenarioInput = {
   id: string;
