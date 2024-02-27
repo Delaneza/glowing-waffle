@@ -24,8 +24,9 @@ export async function ListScenariosUseCase(input: ListScenariosInput): Promise<S
     description: { $regex: description || '', $options: 'i' }
   };
 
-  const scenarios = await Scenario.find(query)
-    // .sort({ [sort]: order })
+  const sortQuery = { sort: { [sort]: order === 'desc' ? -1 : 1 } };
+
+  const scenarios = await Scenario.find(query, {}, sortQuery)
     .skip(skip)
     .limit(limit)
     .exec();
