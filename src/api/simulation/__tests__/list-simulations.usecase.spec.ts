@@ -1,5 +1,5 @@
-import { Simulation } from "../simulation.module"
-import { ListSimulationsUseCase } from "../usecases"
+import { Simulation } from '../simulation.module'
+import { ListSimulationsUseCase } from '../usecases'
 
 describe('list simulations usecase', () => {
   beforeEach(async () => {

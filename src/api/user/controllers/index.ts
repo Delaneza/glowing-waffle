@@ -1,7 +1,4 @@
-import { CreateUserController } from './create-user.controller';
-import { ShowUserController } from './show-user.controller';
+import { CreateUserController } from './create-user.controller'
+import { ShowUserController } from './show-user.controller'
 
-export {
-  CreateUserController,
-  ShowUserController
-};
+export { CreateUserController, ShowUserController }

@@ -1,18 +1,21 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 export type UserDocument = {
-  id: string;
-  email: string;
-  password: string;
-  name: string;
-  view(full: boolean): any;
+  id: string
+  email: string
+  password: string
+  name: string
+  view(full: boolean): any
 }
 
-const userSchema = new Schema<UserDocument>({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  name: { type: String, required: true },
-}, { timestamps: true });
+const userSchema = new Schema<UserDocument>(
+  {
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    name: { type: String, required: true },
+  },
+  { timestamps: true }
+)
 
 userSchema.methods = {
   view(full: boolean) {
@@ -21,15 +24,15 @@ userSchema.methods = {
       id: this.id,
       email: this.email,
       name: this.name,
-    };
+    }
 
     return full
       ? {
-        ...view,
-        password: this.password,
-      }
-      : view;
+          ...view,
+          password: this.password,
+        }
+      : view
   },
-};
+}
 
-export const User = model<UserDocument>("User", userSchema);
+export const User = model<UserDocument>('User', userSchema)

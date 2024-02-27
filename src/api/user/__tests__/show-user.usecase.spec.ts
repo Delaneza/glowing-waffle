@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
-import { ShowUserUseCase } from "../usecases"
-import { User, UserDocument } from "../user.model"
+import mongoose from 'mongoose'
+import { ShowUserUseCase } from '../usecases'
+import { User, UserDocument } from '../user.model'
 
 describe('show user usecase', () => {
   let userToShow: UserDocument
@@ -9,7 +9,7 @@ describe('show user usecase', () => {
     userToShow = await User.create({
       name: 'John Doe',
       email: 'john@doe.com',
-      password: 'password'
+      password: 'password',
     })
   })
 

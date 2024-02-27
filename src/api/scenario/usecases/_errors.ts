@@ -3,5 +3,5 @@ export const DEFAULT_ERRORS = {
     message: 'Scenario not found',
     name: 'ScenarioNotFoundError',
     statusCode: 404,
-  }
+  },
 }

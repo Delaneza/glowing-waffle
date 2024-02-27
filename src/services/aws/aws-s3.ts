@@ -1,12 +1,12 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3"
-import { config } from "@shared/config"
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
+import { config } from '@shared/config'
 
 const s3 = new S3Client({
   region: config.simulationsS3Bucket.region,
   credentials: {
     accessKeyId: config.simulationsS3Bucket.accessKeyId,
     secretAccessKey: config.simulationsS3Bucket.secretAccessKey,
-  }
+  },
 })
 
 export async function UploadObject(key: string, body: any) {

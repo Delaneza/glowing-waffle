@@ -1,3 +1,3 @@
-import { NewSessionController } from "./new-session.controller";
+import { NewSessionController } from './new-session.controller'
 
-export { NewSessionController };
+export { NewSessionController }

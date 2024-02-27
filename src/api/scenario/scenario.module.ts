@@ -1,41 +1,44 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 export type ScenarioDocument = {
-  id: string;
-  user: string;
-  description: string;
-  name: string;
-  lastSimulation: string;
-  simulated: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  view(full: boolean): any;
+  id: string
+  user: string
+  description: string
+  name: string
+  lastSimulation: string
+  simulated: boolean
+  createdAt: Date
+  updatedAt: Date
+  view(full: boolean): any
 }
 
-const scenarioSchema = new Schema({
-  user: {
-    type: String,
-    required: true,
+const scenarioSchema = new Schema(
+  {
+    user: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    lastSimulation: {
+      type: Schema.Types.ObjectId,
+      ref: 'Simulation',
+    },
+    simulated: {
+      type: Boolean,
+      default: false,
+    },
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  lastSimulation: {
-    type: Schema.Types.ObjectId,
-    ref: "Simulation",
-  },
-  simulated: {
-    type: Boolean,
-    default: false,
-  },
-}, {
-  timestamps: true,
-})
+  {
+    timestamps: true,
+  }
+)
 
 scenarioSchema.methods = {
   view(full: boolean) {
@@ -49,14 +52,14 @@ scenarioSchema.methods = {
       simulated: this.simulated,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-    };
+    }
 
     return full
       ? {
-        ...view,
-      }
-      : view;
+          ...view,
+        }
+      : view
   },
-};
+}
 
-export const Scenario = model<ScenarioDocument>("Scenario", scenarioSchema);
+export const Scenario = model<ScenarioDocument>('Scenario', scenarioSchema)

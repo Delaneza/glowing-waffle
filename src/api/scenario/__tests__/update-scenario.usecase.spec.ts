@@ -1,22 +1,21 @@
-import { Scenario, ScenarioDocument } from "../scenario.module"
-import { UpdateScenarioUseCase, UpdateScenarioUseCaseInput } from "../usecases/update-scenario.usecase"
+import { Scenario, ScenarioDocument } from '../scenario.module'
+import { UpdateScenarioUseCase, UpdateScenarioUseCaseInput } from '../usecases/update-scenario.usecase'
 
 describe('update scenario usecase', () => {
   let defaultScenario: ScenarioDocument
   let payload: UpdateScenarioUseCaseInput
 
   beforeEach(async () => {
-    defaultScenario = await Scenario.create(
-      {
-        name: "scenario_124",
-        description: "a scenario",
-        user: '65d88285ca3af2f34df058ad'
-      })
+    defaultScenario = await Scenario.create({
+      name: 'scenario_124',
+      description: 'a scenario',
+      user: '65d88285ca3af2f34df058ad',
+    })
 
     payload = {
       id: defaultScenario.id,
-      name: "scenario_125",
-      description: "a scenario 125",
+      name: 'scenario_125',
+      description: 'a scenario 125',
     }
   })
 
@@ -25,8 +24,8 @@ describe('update scenario usecase', () => {
 
     expect(scenario).toEqual({
       id: defaultScenario.id,
-      name: "scenario_125",
-      description: "a scenario 125",
+      name: 'scenario_125',
+      description: 'a scenario 125',
       user: '65d88285ca3af2f34df058ad',
       lastSimulation: undefined,
       simulated: false,
@@ -36,8 +35,10 @@ describe('update scenario usecase', () => {
   })
 
   it('should throw an error if scenario does not exist', async () => {
-    await expect(UpdateScenarioUseCase({
-      id: '65d88285ca3af2f34df058ad'
-    })).rejects.toThrow('Scenario not found')
+    await expect(
+      UpdateScenarioUseCase({
+        id: '65d88285ca3af2f34df058ad',
+      })
+    ).rejects.toThrow('Scenario not found')
   })
 })

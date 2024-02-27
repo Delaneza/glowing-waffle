@@ -1,15 +1,15 @@
 type AppErrorInput = {
-  message: string;
-  statusCode: number;
-  name: string;
+  message: string
+  statusCode: number
+  name: string
 }
 
 export class AppError extends Error {
-  statusCode: number;
+  statusCode: number
 
   constructor({ message, name, statusCode }: AppErrorInput) {
-    super(message);
-    this.name = name;
-    this.statusCode = statusCode;
+    super(message)
+    this.name = name
+    this.statusCode = statusCode
   }
-} 
+}

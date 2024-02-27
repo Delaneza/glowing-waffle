@@ -1,3 +1,3 @@
-import { NewSessionUseCase } from "./new-session.usecase";
+import { NewSessionUseCase } from './new-session.usecase'
 
-export { NewSessionUseCase };
+export { NewSessionUseCase }

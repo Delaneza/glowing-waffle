@@ -1,6 +1,6 @@
-import { Scenario, ScenarioDocument } from "@src/api/scenario/scenario.module"
-import { Simulation, SimulationDocument } from "../simulation.module"
-import { CreateSimulationInput, CreateSimulationUseCase } from "../usecases/create-simulation.usecase"
+import { Scenario, ScenarioDocument } from '@src/api/scenario/scenario.module'
+import { Simulation, SimulationDocument } from '../simulation.module'
+import { CreateSimulationInput, CreateSimulationUseCase } from '../usecases/create-simulation.usecase'
 
 describe('create simulation usecase', () => {
   let scenario: ScenarioDocument
@@ -8,7 +8,7 @@ describe('create simulation usecase', () => {
   let simulation: SimulationDocument
 
   beforeEach(async () => {
-    scenario = await Scenario.create({ name: 'test', description: 'test', user: '65d88285ca3af2f34df058ad', })
+    scenario = await Scenario.create({ name: 'test', description: 'test', user: '65d88285ca3af2f34df058ad' })
 
     simulation = await Simulation.create({
       status: 'making obj',
@@ -24,7 +24,7 @@ describe('create simulation usecase', () => {
       simulation_cd_id: '65d88285ca3af2f34df058ad',
       user: '65d88285ca3af2f34df058ad',
       sendEvent: jest.fn(),
-      closeConnection: jest.fn()
+      closeConnection: jest.fn(),
     }
   })
 

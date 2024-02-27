@@ -5,14 +5,14 @@ describe('user model', () => {
     const user = await User.create({
       name: 'John Doe',
       email: 'john@doe.com',
-      password: 'password'
+      password: 'password',
     })
 
     expect(user.view(false)).toEqual({
       id: user.id,
       email: user.email,
       name: user.name,
-      password: undefined
+      password: undefined,
     })
   })
 
@@ -20,14 +20,14 @@ describe('user model', () => {
     const user = await User.create({
       name: 'John Doe',
       email: 'john@doe.com',
-      password: 'password'
+      password: 'password',
     })
 
     expect(user.view(true)).toEqual({
       id: user.id,
       email: user.email,
       name: user.name,
-      password: user.password
+      password: user.password,
     })
   })
 })

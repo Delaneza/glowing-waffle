@@ -1,12 +1,12 @@
-import { CreateUserUseCase } from "../usecases";
-import { User } from "../user.model";
+import { CreateUserUseCase } from '../usecases'
+import { User } from '../user.model'
 
 describe('create user usecase', () => {
   it('should create a user', async () => {
     const user = await CreateUserUseCase({
       name: 'John Doe',
       email: 'john@doe.com',
-      password: 'password'
+      password: 'password',
     })
 
     expect(user).toBeDefined()
@@ -20,13 +20,15 @@ describe('create user usecase', () => {
     await User.create({
       name: 'John Doe',
       email: 'john@doe.com',
-      password: 'password'
+      password: 'password',
     })
 
-    await expect(CreateUserUseCase({
-      name: 'John Doe',
-      email: 'john@doe.com',
-      password: 'password'
-    })).rejects.toThrow('User already exists')
+    await expect(
+      CreateUserUseCase({
+        name: 'John Doe',
+        email: 'john@doe.com',
+        password: 'password',
+      })
+    ).rejects.toThrow('User already exists')
   })
 })

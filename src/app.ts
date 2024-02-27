@@ -1,20 +1,20 @@
-import { config } from "@shared/config";
-import bodyParser from 'body-parser';
-import compression from 'compression';
-import cors from 'cors';
-import 'dotenv/config';
-import express, { Express } from 'express';
-import forceSSL from 'express-force-ssl';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import multer from 'multer';
-import swaggerUi from 'swagger-ui-express';
-import { swagger } from "../docs/swagger";
-import { routes } from "./api";
-import { AppErrorHandling } from "./middlewares/error-handling.middleware";
+import { config } from '@shared/config'
+import bodyParser from 'body-parser'
+import compression from 'compression'
+import cors from 'cors'
+import 'dotenv/config'
+import express, { Express } from 'express'
+import forceSSL from 'express-force-ssl'
+import helmet from 'helmet'
+import morgan from 'morgan'
+import multer from 'multer'
+import swaggerUi from 'swagger-ui-express'
+import { swagger } from '../docs/swagger'
+import { routes } from './api'
+import { AppErrorHandling } from './middlewares/error-handling.middleware'
 
-const app: Express = express();
-const env = config.env;
+const app: Express = express()
+const env = config.env
 const upload = multer()
 
 /**
@@ -22,24 +22,24 @@ const upload = multer()
  */
 
 const possibleEnvs = {
-  PRODUCTION: "production",
-  DEVELOPMENT: "development",
-  DEV: "dev",
-  STAGING: "staging",
-  STATING_VLI: "stagingvli"
+  PRODUCTION: 'production',
+  DEVELOPMENT: 'development',
+  DEV: 'dev',
+  STAGING: 'staging',
+  STATING_VLI: 'stagingvli',
 }
 
-const isForceSSL = env === possibleEnvs.PRODUCTION || env === possibleEnvs.DEVELOPMENT ? true : false;
+const isForceSSL = env === possibleEnvs.PRODUCTION || env === possibleEnvs.DEVELOPMENT ? true : false
 
 if (isForceSSL) {
   app.set('forceSSLOptions', {
     enable301Redirects: true,
     trustXFPHeader: false,
     httpsPort: 443,
-    sslRequiredMessage: 'SSL Required.'
+    sslRequiredMessage: 'SSL Required.',
   })
 
-  app.use(forceSSL);
+  app.use(forceSSL)
 }
 
 app.use(cors())
@@ -69,4 +69,4 @@ app.use(routes)
 
 app.use(AppErrorHandling)
 
-export { app };
+export { app }
