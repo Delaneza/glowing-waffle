@@ -4,7 +4,6 @@ import { Scenario } from "@src/api/scenario/scenario.module";
 import { Simulation } from "../simulation.module";
 import { DEFAULT_ERRORS } from "./_errors";
 
-
 export type CreateSimulationInput = {
   scenario: string;
   reference_month: Date;
@@ -64,11 +63,7 @@ async function generateInputSimulation(data: SimulationInputObject, sendEvent: F
   fullObject['init_date'] = new Date().toISOString();
   fullObject['end_date'] = new Date().toISOString();
 
-  setTimeout(() => console.log('waiting 2sec'), 2000);
-
   fullObject['demands'] = [{ demand: 'demand1', value: 10 }, { demand: 'demand2', value: 30 }, { demand: 'demand3', value: 20 }];
-
-  setTimeout(() => console.log('waiting 2sec'), 2000);
 
   fullObject['maintenances'] = [{ maintenance: 'maintenance1', date: new Date().toISOString() }, { maintenance: 'maintenance2', date: new Date().toISOString() }, { maintenance: 'maintenance3', date: new Date().toISOString() }];
 

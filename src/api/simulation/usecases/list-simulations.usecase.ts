@@ -8,7 +8,6 @@ type Cursor = {
 }
 
 export type ListSimulationsInput = {
-  name?: string;
   status?: string;
   scenario?: string;
   reference_month?: Date;
@@ -23,7 +22,7 @@ export async function ListSimulationsUseCase(input: ListSimulationsInput): Promi
 
   const skip = (page - 1) * limit;
 
-  const searchableFields = ['name', 'status', 'scenario', 'simulation_cd_id', 'user'];
+  const searchableFields = ['status', 'scenario', 'simulation_cd_id', 'user'];
 
   const query = searchableFields.reduce((acc, field) => {
     if (input[field]) {
@@ -37,8 +36,9 @@ export async function ListSimulationsUseCase(input: ListSimulationsInput): Promi
     return acc;
   }, {});
 
-  const simulations = await Simulation.find(query)
-    // .sort({ [sort]: order })
+  const sortQuery = { sort: { [sort]: order === 'desc' ? -1 : 1 } };
+
+  const simulations = await Simulation.find(query, {}, sortQuery)
     .skip(skip)
     .limit(limit)
     .exec();

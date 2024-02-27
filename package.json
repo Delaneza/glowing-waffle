@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "test": "jest --config ./jest.config.js",
-    "test:w": "jest --watch --config ./jest.config.js",
+    "test:w": "jest --watch --config ./jest.config.js --detectOpenHandles",
     "test:e2e": "jest --config ./jest-e2e.config.js",
     "prepare": "husky",
     "lint": "eslint . --ext .ts --fix"
