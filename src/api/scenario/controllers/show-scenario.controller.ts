@@ -1,6 +1,6 @@
 import { ok } from "@shared/http/http-responses";
 import { Request, Response } from "express";
-import { ShowScenarioUseCase } from "../usecases/show-scenario.usecase";
+import { ShowScenarioUseCase } from "../usecases";
 
 export async function ShowScenarioController(req: Request, res: Response) {
   const { id } = req.params;
