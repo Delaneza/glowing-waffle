@@ -1,17 +1,22 @@
-import { config } from '@shared/config'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 import cors from 'cors'
 import 'dotenv/config'
-import express, { Express } from 'express'
+import express, { type Express } from 'express'
 import forceSSL from 'express-force-ssl'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import multer from 'multer'
 import swaggerUi from 'swagger-ui-express'
+
+import { config } from '@shared/config'
+
+import { EnvValidator } from '@shared/env/env-validator'
 import { swagger } from '../docs/swagger'
 import { routes } from './api'
 import { AppErrorHandling } from './middlewares/error-handling.middleware'
+
+EnvValidator()
 
 const app: Express = express()
 const env = config.env
@@ -29,7 +34,7 @@ const possibleEnvs = {
   STATING_VLI: 'stagingvli',
 }
 
-const isForceSSL = env === possibleEnvs.PRODUCTION || env === possibleEnvs.DEVELOPMENT ? true : false
+const isForceSSL = !!(env === possibleEnvs.PRODUCTION || env === possibleEnvs.DEVELOPMENT)
 
 if (isForceSSL) {
   app.set('forceSSLOptions', {

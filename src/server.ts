@@ -1,4 +1,5 @@
 import { config } from '@shared/config'
+
 import { app } from './app'
 import { mongoose } from './services/database/mongoose'
 
@@ -13,6 +14,6 @@ process.on('uncaughtException', (error) => {
 
 mongoose.connect(config.mongodb.uri)
 
-app.listen(config.port, config.host, () =>
+app.listen(config.port, config.host, () => {
   console.log(`Server running on ${config.host}:${config.port} in ${config.env} mode`)
-)
+})
