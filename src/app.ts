@@ -16,11 +16,13 @@ import { swagger } from '../docs/swagger'
 import { routes } from './api'
 import { AppErrorHandling } from './middlewares/error-handling.middleware'
 
-EnvValidator()
-
 const app: Express = express()
 const env = config.env
 const upload = multer()
+
+if (env === 'production' || env === 'staging') {
+  EnvValidator()
+}
 
 /**
  * Set up middlewares
