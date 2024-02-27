@@ -1,13 +1,6 @@
 import { AppError } from "@shared/errors/app-error.error";
 import { Scenario, ScenarioDocument } from "../scenario.module";
-
-const DEFAULT_ERRORS = {
-  SCENARIO_NOT_FOUND_ERROR: {
-    message: 'Scenario not found',
-    name: 'ScenarioNotFoundError',
-    statusCode: 404,
-  }
-}
+import { DEFAULT_ERRORS } from "./errors";
 
 export type ShowScenarioInput = {
   id: string;
