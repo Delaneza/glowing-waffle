@@ -21,4 +21,7 @@ module.exports = {
     '<rootDir>/tmp/',
     '<rootDir>/.docker/',
   ],
+  transform: {
+    '^.+\\.(t|j)sx?$': '@swc/jest',
+  },
 };

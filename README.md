@@ -16,6 +16,8 @@
 
 [ ] - jest e2e
 
+[ ] - jest com swc (compilador)
+
 [ ] - project workspace (n prioritario)
 
 [ ] - !config midd de authenticação com o passport
@@ -25,6 +27,8 @@
 [ ] - schedules de exemplo
 
 [ ] - compartilhar coverage do projeto com o sonar [instambul]
+
+[ ] - sonar no docker?
 
 [ ] - migrações (alinhar com o time)
 
