@@ -4,7 +4,6 @@ type AppErrorInput = {
   name: string;
 }
 
-
 export class AppError extends Error {
   statusCode: number;
 

@@ -1,12 +1,12 @@
 import { Scenario, ScenarioDocument } from "../scenario.module";
 
-export type CreateScenarioDTO = {
+export type CreateScenarioInput = {
   user: string;
   description: string;
   name: string;
 };
 
-export async function CreateScenarioUseCase(data: CreateScenarioDTO): Promise<ScenarioDocument> {
+export async function CreateScenarioUseCase(data: CreateScenarioInput): Promise<ScenarioDocument> {
   const scenario = await Scenario.create(data)
 
   return scenario.view(false);

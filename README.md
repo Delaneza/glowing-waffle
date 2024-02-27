@@ -28,6 +28,8 @@
 
 [ ] - migrações (alinhar com o time)
 
+[ ] - avaliar exportação centralizada dos tipos da aplicação
+
 ##########
 
 Mini Simulador:
