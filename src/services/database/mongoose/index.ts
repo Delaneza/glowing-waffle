@@ -14,4 +14,8 @@ mongoose.connection.on('error', (err) => {
   process.exit(-1)
 })
 
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB')
+})
+
 export { mongoose }
