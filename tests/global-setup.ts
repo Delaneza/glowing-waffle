@@ -1,12 +1,12 @@
-import { afterAll, afterEach, beforeAll } from '@jest/globals';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { mongoose } from '../src/services/database/mongoose';
+import { afterAll, afterEach, beforeAll } from '@jest/globals'
+import { MongoMemoryServer } from 'mongodb-memory-server'
+import { mongoose } from '../src/services/database/mongoose'
 
 let mongodbMemoryServer: MongoMemoryServer
 
 beforeAll(async () => {
-  mongodbMemoryServer = await MongoMemoryServer.create();
-  const uri = mongodbMemoryServer.getUri();
+  mongodbMemoryServer = await MongoMemoryServer.create()
+  const uri = mongodbMemoryServer.getUri()
   mongoose.connect(uri)
 })
 

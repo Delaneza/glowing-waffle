@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "9000:9000"
-      - "3000:3000"
+      - '9000:9000'
+      - '3000:3000'
     volumes:
       - .:/app
     depends_on:
@@ -19,9 +19,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: refactor_vli
+      MONGO_INITDB_DATABASE: local_db
       MONGO_REPLICA_HOST: localhost
       MONGO_REPLICA_PORT: 27017
     ports:
-      - "27017:27017"
+      - '27017:27017'
     restart: always

@@ -29,14 +29,12 @@ if (env === 'production' || env === 'staging') {
  */
 
 const possibleEnvs = {
-  PRODUCTION: 'production',
-  DEVELOPMENT: 'development',
   DEV: 'dev',
   STAGING: 'staging',
-  STATING_VLI: 'stagingvli',
+  PRODUCTION: 'production',
 }
 
-const isForceSSL = !!(env === possibleEnvs.PRODUCTION || env === possibleEnvs.DEVELOPMENT)
+const isForceSSL = !!(env === possibleEnvs.PRODUCTION || env === possibleEnvs.STAGING)
 
 if (isForceSSL) {
   app.set('forceSSLOptions', {
