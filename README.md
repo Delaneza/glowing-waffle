@@ -8,11 +8,11 @@
 
 [ ] - estudar aplicação de libs de documentação
 
-[ ] - configurar o prettier
+[X] - configurar o prettier
 
 [ ] - configurar eslint
 
-[ ] - configurar o docker
+[X] - configurar o docker
 
 [ ] - jest e2e
 

@@ -1,17 +1,18 @@
 version: '3'
 
 services:
-  # app:
-  #   container_name: simplified_picpay
-  #   image: node:18.16.0-alpine3.16
-  #   command: sh -c "tail -f /dev/null"
-  #   ports:
-  #     - "3000:3000"
-  #     - "5555:5555"
-  #   volumes:
-  #     - .:/usr/src/app
-  #   depends_on:
-  #     - mongo
+  app:
+    container_name: glowing-waffle
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - mongo
 
   mongo:
     build: ./docker/mongodb_rs
