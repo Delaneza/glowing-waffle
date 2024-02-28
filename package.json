@@ -15,7 +15,8 @@
     "test:e2e": "jest --config ./jest-e2e.config.js",
     "prepare": "husky",
     "lint": "eslint . --ext .ts --fix",
-    "format": "prettier --write '**/*.ts'"
+    "format": "prettier --write '**/*.ts'",
+    "sonar": "node sonarqube-scanner.js"
   },
   "keywords": [],
   "author": "",
