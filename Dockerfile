@@ -8,6 +8,8 @@ WORKDIR /app
 # RUN apk add mongodb mongodb-tools
 # RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
+RUN apk add --no-cache python3
+
 # ENV MONGOMS_SYSTEM_BINARY=/usr/bin/mongod
 
 COPY package*.json ./
