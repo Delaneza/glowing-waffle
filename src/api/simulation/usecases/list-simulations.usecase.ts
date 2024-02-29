@@ -8,6 +8,7 @@ type Cursor = {
 }
 
 export type ListSimulationsInput = {
+  name?: string
   status?: string
   scenario?: string
   reference_month?: Date

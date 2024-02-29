@@ -8,7 +8,7 @@ WORKDIR /app
 # RUN apk add mongodb mongodb-tools
 # RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
-RUN apk add --no-cache python3
+# RUN apk add python3
 
 # ENV MONGOMS_SYSTEM_BINARY=/usr/bin/mongod
 
@@ -20,4 +20,4 @@ COPY . ./
 # EXPOSE 3000
 EXPOSE 9000
 
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start"]

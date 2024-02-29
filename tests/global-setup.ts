@@ -17,9 +17,7 @@ afterAll(async () => {
 
 afterEach(async () => {
   const { collections } = mongoose.connection
-  const promises = []
-  Object.keys(collections).forEach((collection) => {
-    promises.push(collections[collection].deleteMany())
-  })
+  const promises: Array<Promise<mongoose.mongo.DeleteResult>> = [] // Explicitly define the type of the promises array
+  Object.keys(collections).forEach((collection) => promises.push(collections[collection].deleteMany()))
   await Promise.all(promises)
 })
