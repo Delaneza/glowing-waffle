@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "services:up": "docker compose up",
+    "services:install": "docker compose run app npm install",
+    "services:up": "docker compose up app mongodb",
     "services:stop": "docker compose stop",
     "services:down": "docker compose down",
     "start": "npm run build && node dist/server.js",
@@ -71,7 +72,7 @@
     "class-validator": "^0.14.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
     "express-force-ssl": "^0.3.2",
     "helmet": "^7.1.0",
     "joi": "^17.12.2",

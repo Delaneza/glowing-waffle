@@ -1,4 +1,4 @@
-import { Scenario, ScenarioDocument } from '@src/api/scenario/scenario.module'
+import { Scenario, ScenarioDocument } from '@src/api/scenario/scenario.model'
 import { Simulation, SimulationDocument } from '../simulation.model'
 import { CreateSimulationInput, CreateSimulationUseCase } from '../usecases/create-simulation.usecase'
 
