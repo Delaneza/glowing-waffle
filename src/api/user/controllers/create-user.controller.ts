@@ -12,6 +12,8 @@ export const CreateUserDTO = Joi.object({
 export async function CreateUserController(req: Request, res: Response) {
   const { email, password, name } = req.body
 
+  console.log('name', req.body)
+
   const user = await CreateUserUseCase({ email, password, name })
 
   return created(res, user)
