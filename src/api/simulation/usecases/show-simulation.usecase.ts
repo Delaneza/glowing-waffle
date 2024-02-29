@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/app-error.error'
-import { Simulation, SimulationDocument } from '../simulation.module'
+import { Simulation, SimulationDocument } from '../simulation.model'
 import { DEFAULT_ERRORS } from './_errors'
 
 export type ShowSimulationInput = {

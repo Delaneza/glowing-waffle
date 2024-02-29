@@ -1,4 +1,4 @@
-import { Scenario, ScenarioDocument } from '../scenario.module'
+import { Scenario, ScenarioDocument } from '../scenario.model'
 import { UpdateScenarioUseCase, UpdateScenarioUseCaseInput } from '../usecases/update-scenario.usecase'
 
 describe('update scenario usecase', () => {

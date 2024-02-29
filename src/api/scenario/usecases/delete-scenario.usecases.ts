@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/app-error.error'
-import { Scenario } from '../scenario.module'
+import { Scenario } from '../scenario.model'
 import { DEFAULT_ERRORS } from './_errors'
 
 type DeleteScenarioUseCaseInput = {

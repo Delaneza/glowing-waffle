@@ -1,4 +1,4 @@
-import { Scenario, ScenarioDocument } from '../scenario.module'
+import { Scenario, ScenarioDocument } from '../scenario.model'
 
 type Cursor = {
   page?: number

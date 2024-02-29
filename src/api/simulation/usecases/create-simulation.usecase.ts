@@ -1,7 +1,7 @@
 import { UploadObject } from '@services/aws/aws-s3'
 import { AppError } from '@shared/errors/app-error.error'
 import { Scenario } from '@src/api/scenario/scenario.module'
-import { Simulation } from '../simulation.module'
+import { Simulation } from '../simulation.model'
 import { DEFAULT_ERRORS } from './_errors'
 
 export type CreateSimulationInput = {

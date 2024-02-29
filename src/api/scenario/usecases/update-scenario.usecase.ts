@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/app-error.error'
-import { Scenario, ScenarioDocument } from '../scenario.module'
+import { Scenario, ScenarioDocument } from '../scenario.model'
 import { DEFAULT_ERRORS } from './_errors'
 
 export type UpdateScenarioUseCaseInput = {

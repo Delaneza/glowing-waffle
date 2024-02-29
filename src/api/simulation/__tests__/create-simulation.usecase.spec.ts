@@ -1,5 +1,5 @@
 import { Scenario, ScenarioDocument } from '@src/api/scenario/scenario.module'
-import { Simulation, SimulationDocument } from '../simulation.module'
+import { Simulation, SimulationDocument } from '../simulation.model'
 import { CreateSimulationInput, CreateSimulationUseCase } from '../usecases/create-simulation.usecase'
 
 describe('create simulation usecase', () => {

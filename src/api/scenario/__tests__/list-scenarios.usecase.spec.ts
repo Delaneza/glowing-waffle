@@ -1,4 +1,4 @@
-import { Scenario } from '../scenario.module'
+import { Scenario } from '../scenario.model'
 import { ListScenariosUseCase } from '../usecases'
 
 describe('list scenarios usecase', () => {

@@ -1,4 +1,4 @@
-import { Simulation, SimulationDocument } from '../simulation.module'
+import { Simulation, SimulationDocument } from '../simulation.model'
 import { ShowSimulationUseCase } from '../usecases'
 
 describe('show simulation usecase', () => {

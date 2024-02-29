@@ -1,4 +1,4 @@
-import { Scenario, ScenarioDocument } from '../scenario.module'
+import { Scenario, ScenarioDocument } from '../scenario.model'
 import { DeleteScenarioUseCase } from '../usecases'
 
 describe('delete scenario usecase', () => {
