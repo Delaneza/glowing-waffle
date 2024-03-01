@@ -1,4 +1,4 @@
-import { Scenario, ScenarioDocument } from '../scenario.model'
+import { Scenario, ScenarioDocument } from '../../models'
 
 export type CreateScenarioInput = {
   user: string

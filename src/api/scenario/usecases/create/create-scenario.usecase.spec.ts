@@ -1,4 +1,4 @@
-import { CreateScenarioUseCase } from '../usecases'
+import { CreateScenarioUseCase } from '..'
 
 describe('create scenario usecase', () => {
   const payload = {

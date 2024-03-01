@@ -1,5 +1,5 @@
-import { Scenario } from '../scenario.model'
-import { ListScenariosUseCase } from '../usecases'
+import { ListScenariosUseCase } from '..'
+import { Scenario } from '../../models'
 
 describe('list scenarios usecase', () => {
   beforeEach(async () => {

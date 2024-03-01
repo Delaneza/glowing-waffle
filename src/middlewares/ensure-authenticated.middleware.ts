@@ -13,32 +13,34 @@ const TOKEN_IS_MISSING = {
   statusCode: 403,
 }
 
-export async function EnsureAuthenticated(req: Request, res: Response, next: NextFunction) {
-  try {
-    const { authorization: accessToken } = req.headers
-    const token = accessToken?.split(' ')[1]
-
-    if (!token) {
-      return forbidden(res, new AppError(TOKEN_IS_MISSING))
-    }
-
+export function EnsureAuthenticated() {
+  return (req: Request, res: Response, next: NextFunction) => {
     try {
-      const decoded = decode(token) as DecodedJwt
+      const { authorization: accessToken } = req.headers
+      const token = accessToken?.split(' ')[1]
 
-      req.userId = decoded.id
+      if (!token) {
+        return forbidden(res, new AppError(TOKEN_IS_MISSING))
+      }
 
-      return next()
-    } catch (err) {
-      console.error(err)
+      try {
+        const decoded = decode(token) as DecodedJwt
 
-      return res.status(403).json({
-        message: 'Invalid token',
-        name: 'Unauthorized',
-        statusCode: 403,
-      })
+        req.userId = decoded.id
+
+        return next()
+      } catch (err) {
+        console.error(err)
+
+        return res.status(403).json({
+          message: 'Invalid token',
+          name: 'Unauthorized',
+          statusCode: 403,
+        })
+      }
+    } catch (error) {
+      return next(error)
     }
-  } catch (error) {
-    return next(error)
   }
 }
 

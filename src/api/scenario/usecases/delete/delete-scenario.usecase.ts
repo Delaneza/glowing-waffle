@@ -1,12 +1,12 @@
 import { AppError } from '@shared/errors/app-error.error'
-import { Scenario } from '../scenario.model'
-import { DEFAULT_ERRORS } from './_errors'
+import { DEFAULT_ERRORS } from '../../helpers/errors'
+import { Scenario } from '../../models'
 
 type DeleteScenarioUseCaseInput = {
   id: string
 }
 
-export async function DeleteScenarioUseCase(input: DeleteScenarioUseCaseInput): Promise<any> {
+export async function deleteScenarioUseCase(input: DeleteScenarioUseCaseInput): Promise<any> {
   const scenario = await Scenario.findById(input.id)
 
   if (!scenario) {

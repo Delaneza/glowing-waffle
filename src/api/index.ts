@@ -1,4 +1,4 @@
-import { scenarioRoutes } from '@api/scenario/scenarios.route'
+import { scenarioRoutes } from '@api/scenario/routes'
 import { sessionRoutes } from '@api/session/sessions.route'
 import { userRoutes } from '@api/user/users.route'
 import express, { Router } from 'express'

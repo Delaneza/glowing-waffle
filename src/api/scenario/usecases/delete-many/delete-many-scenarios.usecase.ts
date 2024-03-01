@@ -1,4 +1,4 @@
-import { Scenario } from '../scenario.model'
+import { Scenario } from '../../models'
 
 type DeleteManyScenariosUseCaseInput = {
   ids: string[]

@@ -1,5 +1,5 @@
-import { Scenario, ScenarioDocument } from '../scenario.model'
-import { ShowScenarioUseCase } from '../usecases'
+import { ShowScenarioUseCase } from '..'
+import { Scenario, ScenarioDocument } from '../../models'
 
 describe('show scenario usecase', () => {
   let defaultScenario: ScenarioDocument

@@ -1,5 +1,5 @@
-import { Scenario, ScenarioDocument } from '../scenario.model'
-import { DeleteManyScenariosUseCase } from '../usecases'
+import { DeleteManyScenariosUseCase } from '..'
+import { Scenario, ScenarioDocument } from '../../models'
 
 describe('delete many scenarios usecase', () => {
   let defaultScenarios: ScenarioDocument[]
