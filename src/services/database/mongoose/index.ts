@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+import { logger } from '@services/logger/logger'
 import { config } from '@shared/config'
 
 const mongodbConfig = config.mongodb
@@ -9,13 +10,12 @@ Object.keys(mongodbConfig.options).forEach((key: any) => {
 })
 
 mongoose.connection.on('error', (err) => {
-  // use a logger here
-  console.error('MongoDB Connection Error', err)
+  logger.error('MongoDB connection error:', err)
   process.exit(-1)
 })
 
 mongoose.connection.on('connected', () => {
-  console.log('Connected to MongoDB')
+  logger.info('Connected to MongoDB')
 })
 
 export { mongoose }
