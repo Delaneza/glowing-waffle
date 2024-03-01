@@ -1,5 +1,6 @@
-import { Scenario, ScenarioDocument } from '../../models'
-import { UpdateScenarioUseCase, UpdateScenarioUseCaseInput } from './update-scenario.usecase'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
+import { updateScenarioUseCase, UpdateScenarioUseCaseInput } from './update-scenario.usecase'
 
 describe('update scenario usecase', () => {
   let defaultScenario: ScenarioDocument
@@ -20,7 +21,7 @@ describe('update scenario usecase', () => {
   })
 
   it('should update a scenario', async () => {
-    const scenario = await UpdateScenarioUseCase(payload)
+    const scenario = await updateScenarioUseCase(payload)
 
     expect(scenario).toEqual({
       id: defaultScenario.id,
@@ -36,7 +37,7 @@ describe('update scenario usecase', () => {
 
   it('should throw an error if scenario does not exist', async () => {
     await expect(
-      UpdateScenarioUseCase({
+      updateScenarioUseCase({
         id: '65d88285ca3af2f34df058ad',
       })
     ).rejects.toThrow('Scenario not found')

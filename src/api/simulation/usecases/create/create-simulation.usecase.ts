@@ -1,8 +1,7 @@
 import { UploadObject } from '@services/aws/aws-s3'
-import { AppError } from '@shared/errors/app-error.error'
-import { Scenario } from '@src/api/scenario/scenario.model'
-import { Simulation } from '../simulation.model'
-import { DEFAULT_ERRORS } from './_errors'
+import { conflictError, notFoundError } from '@shared/errors/default-errors.error'
+import { Scenario } from '@src/api/scenario/models'
+import { Simulation } from '../../models'
 
 export type CreateSimulationInput = {
   scenario: string
@@ -20,17 +19,17 @@ type SimulationInputObject = {
   scenario: string
 }
 
-export async function CreateSimulationUseCase(data: CreateSimulationInput) {
+export async function createSimulationUseCase(data: CreateSimulationInput) {
   const scenario = await Scenario.findById(data.scenario)
 
   if (!scenario) {
-    throw new AppError(DEFAULT_ERRORS.SCENARIO_NOT_FOUND_ERROR)
+    throw notFoundError('scenario', data.scenario)
   }
 
   const simulationExists = await Simulation.findOne({ simulation_cd_id: data.simulation_cd_id })
 
   if (simulationExists) {
-    throw new AppError(DEFAULT_ERRORS.SIMULATION_ALREADY_EXISTS_ERROR)
+    throw conflictError('simulation', `Simulação com o código "${data.simulation_cd_id}" já existe`)
   }
 
   const { sendEvent, closeConnection } = data

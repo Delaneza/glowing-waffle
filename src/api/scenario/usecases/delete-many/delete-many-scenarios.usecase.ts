@@ -10,7 +10,7 @@ type DeleteManyScenariosUseCaseOutput = {
   undeletedIds?: string[]
 }
 
-export async function DeleteManyScenariosUseCase(
+export async function deleteManyScenariosUseCase(
   input: DeleteManyScenariosUseCaseInput
 ): Promise<DeleteManyScenariosUseCaseOutput> {
   const scenarios = await Scenario.find({ _id: { $in: input.ids } })

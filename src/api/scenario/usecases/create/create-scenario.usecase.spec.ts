@@ -1,4 +1,4 @@
-import { CreateScenarioUseCase } from '..'
+import { createScenarioUseCase } from '..'
 
 describe('create scenario usecase', () => {
   const payload = {
@@ -8,7 +8,7 @@ describe('create scenario usecase', () => {
   }
 
   it('should create scenario', async () => {
-    const scenario = await CreateScenarioUseCase(payload)
+    const scenario = await createScenarioUseCase(payload)
 
     expect(scenario).toEqual({
       id: expect.any(String),

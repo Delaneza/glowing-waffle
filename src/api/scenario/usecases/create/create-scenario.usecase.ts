@@ -1,4 +1,5 @@
-import { Scenario, ScenarioDocument } from '../../models'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
 
 export type CreateScenarioInput = {
   user: string
@@ -6,7 +7,7 @@ export type CreateScenarioInput = {
   name: string
 }
 
-export async function CreateScenarioUseCase(data: CreateScenarioInput): Promise<ScenarioDocument> {
+export async function createScenarioUseCase(data: CreateScenarioInput): Promise<ScenarioDocument> {
   const scenario = await Scenario.create(data)
 
   return scenario.view(false)

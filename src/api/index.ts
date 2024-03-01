@@ -1,8 +1,8 @@
 import { scenarioRoutes } from '@api/scenario/routes'
-import { sessionRoutes } from '@api/session/sessions.route'
-import { userRoutes } from '@api/user/users.route'
+import { sessionRoutes } from '@api/session/routes'
+import { simulationRoutes } from '@api/simulation/routes'
+import { userRoutes } from '@api/user/routes'
 import express, { Router } from 'express'
-import { simulationRoutes } from './simulation/simulations.route'
 
 const routes: Router = express.Router()
 

@@ -1,5 +1,6 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
+import { deleteScenarioUseCase } from '../usecases'
 
 export async function deleteScenarioController(req: Request, res: Response) {
   const { id } = req.params

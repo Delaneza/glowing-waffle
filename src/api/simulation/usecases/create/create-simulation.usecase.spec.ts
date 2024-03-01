@@ -1,6 +1,6 @@
-import { Scenario, ScenarioDocument } from '@src/api/scenario/scenario.model'
-import { Simulation, SimulationDocument } from '../simulation.model'
-import { CreateSimulationInput, CreateSimulationUseCase } from '../usecases/create-simulation.usecase'
+import { Scenario, ScenarioDocument } from '@src/api/scenario/models/scenario.model'
+import { Simulation, SimulationDocument } from '../../models/simulation.model'
+import { CreateSimulationInput, createSimulationUseCase } from './create-simulation.usecase'
 
 describe('create simulation usecase', () => {
   let scenario: ScenarioDocument
@@ -29,7 +29,7 @@ describe('create simulation usecase', () => {
   })
 
   it('should create a simulation', async () => {
-    await CreateSimulationUseCase(payload)
+    await createSimulationUseCase(payload)
 
     const simulation = await Simulation.findOne({ simulation_cd_id: payload.simulation_cd_id })
 
@@ -39,12 +39,12 @@ describe('create simulation usecase', () => {
   it('should throw an error if the scenario does not exist', async () => {
     payload.scenario = '65d88285ca3af2f34df058ad'
 
-    await expect(CreateSimulationUseCase(payload)).rejects.toThrow('Scenario not found')
+    await expect(createSimulationUseCase(payload)).rejects.toThrow('Scenario not found')
   })
 
   it('should throw an error if the simulation already exists', async () => {
     payload.simulation_cd_id = simulation.simulation_cd_id
 
-    await expect(CreateSimulationUseCase(payload)).rejects.toThrow('Simulation already exists')
+    await expect(createSimulationUseCase(payload)).rejects.toThrow('Simulation already exists')
   })
 })

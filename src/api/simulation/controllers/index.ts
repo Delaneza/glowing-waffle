@@ -1,5 +1,5 @@
-import { CreateSimulationController } from './create-simulation.controller'
-import { ListSimulationsController } from './list-simulations.controller'
-import { ShowSimulationController } from './show-simulation.controller'
+import { createSimulationController } from './create-simulation.controller'
+import { listSimulationsController } from './list-simulations.controller'
+import { showSimulationController } from './show-simulation.controller'
 
-export { CreateSimulationController, ListSimulationsController, ShowSimulationController }
+export { createSimulationController, listSimulationsController, showSimulationController }

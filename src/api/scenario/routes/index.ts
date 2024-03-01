@@ -7,6 +7,7 @@ import {
   deleteManyScenariosController,
   deleteScenarioController,
   listScenariosController,
+  showScenarioController,
   updateScenarioController,
 } from '../controllers'
 import { createScenarioDTO, deleteManyScenariosDTO, updateScenarioDTO } from '../dtos'

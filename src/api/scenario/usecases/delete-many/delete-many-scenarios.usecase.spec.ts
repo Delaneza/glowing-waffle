@@ -1,5 +1,6 @@
-import { DeleteManyScenariosUseCase } from '..'
-import { Scenario, ScenarioDocument } from '../../models'
+import { deleteManyScenariosUseCase } from '..'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
 
 describe('delete many scenarios usecase', () => {
   let defaultScenarios: ScenarioDocument[]
@@ -27,7 +28,7 @@ describe('delete many scenarios usecase', () => {
   })
 
   it('should delete many scenarios', async () => {
-    const response = await DeleteManyScenariosUseCase({
+    const response = await deleteManyScenariosUseCase({
       ids: defaultScenarios.map((scenario) => scenario.id),
     })
 
@@ -35,7 +36,7 @@ describe('delete many scenarios usecase', () => {
   })
 
   it('should not delete scenarios that do not exist', async () => {
-    const response = await DeleteManyScenariosUseCase({
+    const response = await deleteManyScenariosUseCase({
       ids: ['65d88285ca3af2f34df058ad'],
     })
 
@@ -43,7 +44,7 @@ describe('delete many scenarios usecase', () => {
   })
 
   it('should not delete scenarios that do not exist', async () => {
-    const response = await DeleteManyScenariosUseCase({
+    const response = await deleteManyScenariosUseCase({
       ids: ['65d88285ca3af2f34df058ad', defaultScenarios[0].id],
     })
 

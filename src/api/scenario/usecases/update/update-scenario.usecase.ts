@@ -1,6 +1,6 @@
-import { AppError } from '@shared/errors/app-error.error'
-import { DEFAULT_ERRORS } from '../../helpers/errors'
-import { Scenario, ScenarioDocument } from '../../models'
+import { notFoundError } from '@shared/errors/default-errors.error'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
 
 export type UpdateScenarioUseCaseInput = {
   id: string
@@ -8,11 +8,11 @@ export type UpdateScenarioUseCaseInput = {
   description?: string
 }
 
-export async function UpdateScenarioUseCase(input: UpdateScenarioUseCaseInput): Promise<ScenarioDocument> {
+export async function updateScenarioUseCase(input: UpdateScenarioUseCaseInput): Promise<ScenarioDocument> {
   const scenario = await Scenario.findById(input.id)
 
   if (!scenario) {
-    throw new AppError(DEFAULT_ERRORS.SCENARIO_NOT_FOUND_ERROR)
+    throw notFoundError('scenario', input.id)
   }
 
   const possibleFieldsToUpdate = ['name', 'description']

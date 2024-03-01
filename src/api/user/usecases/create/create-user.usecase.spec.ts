@@ -1,9 +1,9 @@
-import { CreateUserUseCase } from '../usecases'
-import { User } from '../user.model'
+import { createUserUseCase } from '..'
+import { User } from '../../models'
 
 describe('create user usecase', () => {
   it('should create a user', async () => {
-    const user = await CreateUserUseCase({
+    const user = await createUserUseCase({
       name: 'John Doe',
       email: 'john@doe.com',
       password: 'password',
@@ -24,7 +24,7 @@ describe('create user usecase', () => {
     })
 
     await expect(
-      CreateUserUseCase({
+      createUserUseCase({
         name: 'John Doe',
         email: 'john@doe.com',
         password: 'password',

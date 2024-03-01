@@ -1,5 +1,6 @@
-import { DeleteScenarioUseCase } from '..'
-import { Scenario, ScenarioDocument } from '../../models'
+import { deleteScenarioUseCase } from '..'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
 
 describe('delete scenario usecase', () => {
   let defaultScenario: ScenarioDocument
@@ -13,7 +14,7 @@ describe('delete scenario usecase', () => {
   })
 
   it('should delete a scenario', async () => {
-    const response = await DeleteScenarioUseCase({
+    const response = await deleteScenarioUseCase({
       id: defaultScenario.id,
     })
 
@@ -22,7 +23,7 @@ describe('delete scenario usecase', () => {
 
   it('should throw an error if scenario does not exist', async () => {
     await expect(
-      DeleteScenarioUseCase({
+      deleteScenarioUseCase({
         id: '65d88285ca3af2f34df058ad',
       })
     ).rejects.toThrow('Scenario not found')

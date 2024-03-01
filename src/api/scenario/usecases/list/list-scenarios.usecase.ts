@@ -1,4 +1,5 @@
-import { Scenario, ScenarioDocument } from '../../models'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
 
 type Cursor = {
   page?: number
@@ -13,7 +14,7 @@ export type ListScenariosInput = {
   cursor: Cursor
 }
 
-export async function ListScenariosUseCase(input: ListScenariosInput): Promise<ScenarioDocument[]> {
+export async function listScenariosUseCase(input: ListScenariosInput): Promise<ScenarioDocument[]> {
   const { cursor, name, description } = input
   const { page = 1, limit = 10, sort = 'createdAt', order = 'desc' } = cursor
 

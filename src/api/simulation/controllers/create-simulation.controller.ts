@@ -1,19 +1,12 @@
 import { Request, Response } from 'express'
-import { z } from 'zod'
-import { CreateSimulationUseCase } from '../usecases'
-
-export const CreateSimulationDTO = z.object({
-  scenario: z.string(),
-  reference_month: z.string(),
-  simulation_cd_id: z.string(),
-})
+import { createSimulationUseCase } from '../usecases'
 
 type SendEventData = {
   status: number
   result: any
 }
 
-export async function CreateSimulationController(req: Request, res: Response) {
+export async function createSimulationController(req: Request, res: Response) {
   const { userId: user } = req
   const { scenario, reference_month, simulation_cd_id } = req.body
 
@@ -27,7 +20,7 @@ export async function CreateSimulationController(req: Request, res: Response) {
     res.end()
   }
 
-  await CreateSimulationUseCase({ user, scenario, reference_month, simulation_cd_id, sendEvent, closeConnection })
+  await createSimulationUseCase({ user, scenario, reference_month, simulation_cd_id, sendEvent, closeConnection })
 }
 
 function setSSEHeaders(res: Response) {

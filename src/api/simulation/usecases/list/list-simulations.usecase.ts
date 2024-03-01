@@ -1,4 +1,5 @@
-import { Simulation, SimulationDocument } from '../simulation.model'
+import { Simulation } from '../../models'
+import { SimulationDocument } from '../../models/simulation.model'
 
 type Cursor = {
   page?: number
@@ -17,7 +18,7 @@ export type ListSimulationsInput = {
   cursor: Cursor
 }
 
-export async function ListSimulationsUseCase(input: ListSimulationsInput): Promise<SimulationDocument[]> {
+export async function listSimulationsUseCase(input: ListSimulationsInput): Promise<SimulationDocument[]> {
   const { cursor } = input
   const { page = 1, limit = 10, sort = 'createdAt', order = 'desc' } = cursor
 

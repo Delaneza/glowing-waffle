@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
-import { ShowUserUseCase } from '../usecases'
-import { User, UserDocument } from '../user.model'
+import { showUserUseCase } from '..'
+import { User } from '../../models'
+import { UserDocument } from '../../models/user.model'
 
 describe('show user usecase', () => {
   let userToShow: UserDocument
@@ -14,7 +15,7 @@ describe('show user usecase', () => {
   })
 
   it('should show a user', async () => {
-    const user = await ShowUserUseCase(userToShow.id)
+    const user = await showUserUseCase(userToShow.id)
 
     expect(user).toBeDefined()
     expect(user.id).toBe(userToShow.id)
@@ -25,6 +26,6 @@ describe('show user usecase', () => {
 
   it('should throw if user does not exist', async () => {
     const invalidId = new mongoose.Types.ObjectId().toHexString()
-    await expect(ShowUserUseCase(invalidId)).rejects.toThrow(`User not found with id: \'${invalidId}\'`)
+    await expect(showUserUseCase(invalidId)).rejects.toThrow(`User not found with id: \'${invalidId}\'`)
   })
 })

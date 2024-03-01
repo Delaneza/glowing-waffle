@@ -1,5 +1,4 @@
-import { AppError } from '@shared/errors/app-error.error'
-import { DEFAULT_ERRORS } from '../../helpers/errors'
+import { notFoundError } from '@shared/errors/default-errors.error'
 import { Scenario } from '../../models'
 
 type DeleteScenarioUseCaseInput = {
@@ -10,7 +9,7 @@ export async function deleteScenarioUseCase(input: DeleteScenarioUseCaseInput): 
   const scenario = await Scenario.findById(input.id)
 
   if (!scenario) {
-    throw new AppError(DEFAULT_ERRORS.SCENARIO_NOT_FOUND_ERROR)
+    throw notFoundError('scenario', input.id)
   }
 
   const { acknowledged, deletedCount } = await scenario.deleteOne()

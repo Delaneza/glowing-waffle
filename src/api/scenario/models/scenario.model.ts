@@ -30,10 +30,6 @@ const scenarioSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Simulation',
     },
-    merchandise: {
-      type: Schema.Types.ObjectId,
-      ref: 'Merchandise',
-    },
     simulated: {
       type: Boolean,
       default: false,
@@ -53,7 +49,6 @@ scenarioSchema.methods = {
       description: this.description,
       name: this.name,
       lastSimulation: this.lastSimulation,
-      merchandise: this.merchandise.name,
       simulated: this.simulated,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,

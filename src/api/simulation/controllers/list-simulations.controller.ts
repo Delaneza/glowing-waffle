@@ -1,11 +1,11 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import { ListSimulationsUseCase } from '../usecases'
+import { listSimulationsUseCase } from '../usecases'
 
-export async function ListSimulationsController(req: Request, res: Response) {
+export async function listSimulationsController(req: Request, res: Response) {
   const { name, status, scenario, reference_month, simulation_cd_id, user, cursor } = req.query
 
-  const simulations = await ListSimulationsUseCase({
+  const simulations = await listSimulationsUseCase({
     name: name as string,
     status: status as string,
     scenario: scenario as string,

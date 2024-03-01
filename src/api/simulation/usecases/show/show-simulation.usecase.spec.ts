@@ -1,5 +1,6 @@
-import { Simulation, SimulationDocument } from '../simulation.model'
-import { ShowSimulationUseCase } from '../usecases'
+import { showSimulationUseCase } from '..'
+import { Simulation } from '../../models'
+import { SimulationDocument } from '../../models/simulation.model'
 
 describe('show simulation usecase', () => {
   let defaultSimuation: SimulationDocument
@@ -15,7 +16,7 @@ describe('show simulation usecase', () => {
   })
 
   it('should show simulation', async () => {
-    const simulation = await ShowSimulationUseCase({ id: defaultSimuation.id })
+    const simulation = await showSimulationUseCase({ id: defaultSimuation.id })
 
     expect(simulation).toEqual({
       id: defaultSimuation.id,
@@ -32,6 +33,6 @@ describe('show simulation usecase', () => {
   })
 
   it('should throw error when simulation not found', async () => {
-    await expect(ShowSimulationUseCase({ id: '65d88285ca3af2f34df058aa' })).rejects.toThrow('Simulation not found')
+    await expect(showSimulationUseCase({ id: '65d88285ca3af2f34df058aa' })).rejects.toThrow('Simulation not found')
   })
 })

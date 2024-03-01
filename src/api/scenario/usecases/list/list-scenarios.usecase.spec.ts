@@ -1,4 +1,4 @@
-import { ListScenariosUseCase } from '..'
+import { listScenariosUseCase } from '..'
 import { Scenario } from '../../models'
 
 describe('list scenarios usecase', () => {
@@ -25,7 +25,7 @@ describe('list scenarios usecase', () => {
   })
 
   it('should list scenarios', async () => {
-    const scenarios = await ListScenariosUseCase({
+    const scenarios = await listScenariosUseCase({
       cursor: {},
     })
 
@@ -33,7 +33,7 @@ describe('list scenarios usecase', () => {
   })
 
   it('should list scenarios by name', async () => {
-    const scenarios = await ListScenariosUseCase({
+    const scenarios = await listScenariosUseCase({
       name: 'scenario_124',
       cursor: {},
     })
@@ -42,7 +42,7 @@ describe('list scenarios usecase', () => {
   })
 
   it('should list scenarios by description', async () => {
-    const scenarios = await ListScenariosUseCase({
+    const scenarios = await listScenariosUseCase({
       description: 'this is the 56 scenario',
       cursor: {},
     })
@@ -51,7 +51,7 @@ describe('list scenarios usecase', () => {
   })
 
   it('should list scenarios by name and description', async () => {
-    const scenarios = await ListScenariosUseCase({
+    const scenarios = await listScenariosUseCase({
       name: 'scenario_124',
       description: 'a scenario',
       cursor: {},
@@ -61,7 +61,7 @@ describe('list scenarios usecase', () => {
   })
 
   it('should list scenarios by page', async () => {
-    const scenarios = await ListScenariosUseCase({
+    const scenarios = await listScenariosUseCase({
       cursor: {
         page: 1,
         limit: 1,
@@ -72,7 +72,7 @@ describe('list scenarios usecase', () => {
   })
 
   it('should list scenarios by sort', async () => {
-    const scenarios = await ListScenariosUseCase({
+    const scenarios = await listScenariosUseCase({
       cursor: {
         sort: 'name',
         order: 'asc',

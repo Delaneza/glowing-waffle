@@ -1,5 +1,6 @@
-import { ShowScenarioUseCase } from '..'
-import { Scenario, ScenarioDocument } from '../../models'
+import { showScenarioUseCase } from '..'
+import { Scenario } from '../../models'
+import { ScenarioDocument } from '../../models/scenario.model'
 
 describe('show scenario usecase', () => {
   let defaultScenario: ScenarioDocument
@@ -13,7 +14,7 @@ describe('show scenario usecase', () => {
   })
 
   it('should show a scenario', async () => {
-    const scenario = await ShowScenarioUseCase({
+    const scenario = await showScenarioUseCase({
       id: defaultScenario.id,
     })
 
@@ -22,7 +23,7 @@ describe('show scenario usecase', () => {
 
   it('should throw an error if scenario does not exist', async () => {
     await expect(
-      ShowScenarioUseCase({
+      showScenarioUseCase({
         id: '65d88285ca3af2f34df058ad',
       })
     ).rejects.toThrow('Scenario not found')
