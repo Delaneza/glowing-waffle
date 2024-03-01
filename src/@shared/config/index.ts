@@ -14,7 +14,7 @@ export const config = {
   },
   postgres: {},
   sessionTimeout: SEVEN_DAYS,
-  JWTSecret: process.env.JWT_SECRET,
+  JWTSecret: process.env.JWT_SECRET ?? '',
   simulationsS3Bucket: {
     bucket: process.env.SIMULATIONS_S3_BUCKET ?? '',
     region: process.env.SIMULATIONS_S3_REGION ?? '',

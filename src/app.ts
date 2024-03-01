@@ -43,7 +43,6 @@ if (isForceSSL) {
     httpsPort: 443,
     sslRequiredMessage: 'SSL Required.',
   })
-
   app.use(forceSSL)
 }
 

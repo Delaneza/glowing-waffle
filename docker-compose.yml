@@ -4,8 +4,10 @@ services:
   app:
     container_name: backend-app
     build: .
+    command: npm run start:dev
     ports:
       - '9000:9000'
+      - '9229:9229'
     volumes:
       - .:/app
     depends_on:

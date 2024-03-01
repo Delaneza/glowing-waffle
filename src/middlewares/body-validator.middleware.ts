@@ -12,7 +12,7 @@ export function BodyValidator(schema: Schema) {
     if (error) {
       const details = error.details.map((err) => ({
         message: err.message,
-        key: err.context.key,
+        key: err.context?.key,
       }))
 
       res.status(400).json(details)
