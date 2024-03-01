@@ -1,3 +1,26 @@
 {
-  "configurations": []
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Jest Tests",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "--config ${workspaceFolder}/jest.config.js",
+        "--runInBand",
+        "--detectOpenHandles"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch App",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "tsx watch ${workspaceFolder}/src/server.ts"
+    },
+  ]
 }
