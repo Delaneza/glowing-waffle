@@ -1,19 +1,12 @@
 import { Request, Response } from 'express'
-import Joi from 'joi'
-import { CreateSimulationUseCase } from '../usecases'
-
-export const CreateSimulationDTO = Joi.object({
-  scenario: Joi.string().required(),
-  reference_month: Joi.date().required(),
-  simulation_cd_id: Joi.string().required(),
-})
+import { createSimulationUseCase } from '../usecases'
 
 type SendEventData = {
   status: number
   result: any
 }
 
-export async function CreateSimulationController(req: Request, res: Response) {
+export async function createSimulationController(req: Request, res: Response) {
   const { userId: user } = req
   const { scenario, reference_month, simulation_cd_id } = req.body
 
@@ -27,7 +20,7 @@ export async function CreateSimulationController(req: Request, res: Response) {
     res.end()
   }
 
-  await CreateSimulationUseCase({ user, scenario, reference_month, simulation_cd_id, sendEvent, closeConnection })
+  await createSimulationUseCase({ user, scenario, reference_month, simulation_cd_id, sendEvent, closeConnection })
 }
 
 function setSSEHeaders(res: Response) {

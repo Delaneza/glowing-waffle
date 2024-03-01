@@ -1,5 +1,5 @@
-import { CreateSimulationUseCase } from './create-simulation.usecase'
-import { ListSimulationsUseCase } from './list-simulations.usecase'
-import { ShowSimulationUseCase } from './show-simulation.usecase'
+import { createSimulationUseCase } from './create/create-simulation.usecase'
+import { listSimulationsUseCase } from './list/list-simulations.usecase'
+import { showSimulationUseCase } from './show/show-simulation.usecase'
 
-export { CreateSimulationUseCase, ListSimulationsUseCase, ShowSimulationUseCase }
+export { createSimulationUseCase, listSimulationsUseCase, showSimulationUseCase }

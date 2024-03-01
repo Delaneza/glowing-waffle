@@ -1,4 +1,4 @@
-import { CreateUserUseCase } from './create-user.usecase'
-import { ShowUserUseCase } from './show-user.usecase'
+import { createUserUseCase } from './create/create-user.usecase'
+import { showUserUseCase } from './show/show-user.usecase'
 
-export { CreateUserUseCase, ShowUserUseCase }
+export { createUserUseCase, showUserUseCase }

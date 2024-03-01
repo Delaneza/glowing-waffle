@@ -1,20 +1,12 @@
 import { created } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import Joi from 'joi'
-import { CreateUserUseCase } from '../usecases'
 
-export const CreateUserDTO = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
-  name: Joi.string().required(),
-})
+import { createUserUseCase } from '../usecases'
 
-export async function CreateUserController(req: Request, res: Response) {
+export async function createUserController(req: Request, res: Response) {
   const { email, password, name } = req.body
 
-  console.log('name', req.body)
-
-  const user = await CreateUserUseCase({ email, password, name })
+  const user = await createUserUseCase({ email, password, name })
 
   return created(res, user)
 }

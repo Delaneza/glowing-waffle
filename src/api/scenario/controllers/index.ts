@@ -1,15 +1,15 @@
-import { CreateScenarioController } from './create-scenario.controller'
-import { DeleteManyScenariosController } from './delete-many-scenarios.controller'
-import { DeleteScenarioController } from './delete-scenario.controller'
-import { ListScenariosController } from './list-scenarios.controller'
-import { ShowScenarioController } from './show-scenario.controller'
-import { UpdateScenarioController } from './update-scenario.controller'
+import { createScenarioController } from './create-scenario.controller'
+import { deleteManyScenariosController } from './delete-many-scenarios.controller'
+import { deleteScenarioController } from './delete-scenario.controller'
+import { listScenariosController } from './list-scenarios.controller'
+import { showScenarioController } from './show-scenario.controller'
+import { updateScenarioController } from './update-scenario.controller'
 
 export {
-  CreateScenarioController,
-  DeleteManyScenariosController,
-  DeleteScenarioController,
-  ListScenariosController,
-  ShowScenarioController,
-  UpdateScenarioController,
+  createScenarioController,
+  deleteManyScenariosController,
+  deleteScenarioController,
+  listScenariosController,
+  showScenarioController,
+  updateScenarioController,
 }

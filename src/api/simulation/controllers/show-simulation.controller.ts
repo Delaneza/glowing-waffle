@@ -1,11 +1,11 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import { ShowSimulationUseCase } from '../usecases'
+import { showSimulationUseCase } from '../usecases'
 
-export async function ShowSimulationController(req: Request, res: Response) {
+export async function showSimulationController(req: Request, res: Response) {
   const { id } = req.params
 
-  const simulation = await ShowSimulationUseCase({ id })
+  const simulation = await showSimulationUseCase({ id })
 
   return ok(res, simulation)
 }

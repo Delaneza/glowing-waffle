@@ -1,17 +1,12 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import Joi from 'joi'
-import { NewSessionUseCase } from '../usecases/new-session.usecase'
 
-export const NewSessionDTO = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-})
+import { newSessionUseCase } from '../usecases'
 
-export async function NewSessionController(req: Request, res: Response) {
+export async function newSessionController(req: Request, res: Response) {
   const { email, password } = req.body
 
-  const { token, user } = await NewSessionUseCase({ email, password })
+  const { token, user } = await newSessionUseCase({ email, password })
 
   return ok(res, { token, user })
 }
