@@ -1,10 +1,10 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import Joi from 'joi'
+import { z } from 'zod'
 import { DeleteManyScenariosUseCase } from '../usecases'
 
-export const DeleteManyScenariosDTO = Joi.object({
-  ids: Joi.array().items(Joi.string().required()).required(),
+export const DeleteManyScenariosDTO = z.object({
+  ids: z.array(z.string()),
 })
 
 export async function DeleteManyScenariosController(req: Request, res: Response) {

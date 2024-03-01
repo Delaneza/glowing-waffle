@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import Joi from 'joi'
+import { z } from 'zod'
 import { CreateSimulationUseCase } from '../usecases'
 
-export const CreateSimulationDTO = Joi.object({
-  scenario: Joi.string().required(),
-  reference_month: Joi.date().required(),
-  simulation_cd_id: Joi.string().required(),
+export const CreateSimulationDTO = z.object({
+  scenario: z.string(),
+  reference_month: z.string(),
+  simulation_cd_id: z.string(),
 })
 
 type SendEventData = {

@@ -1,12 +1,12 @@
 import { created } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import Joi from 'joi'
+import { z } from 'zod'
 import { CreateUserUseCase } from '../usecases'
 
-export const CreateUserDTO = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
-  name: Joi.string().required(),
+export const CreateUserDTO = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+  name: z.string(),
 })
 
 export async function CreateUserController(req: Request, res: Response) {

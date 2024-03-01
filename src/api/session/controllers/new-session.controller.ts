@@ -1,11 +1,11 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import Joi from 'joi'
+import { z } from 'zod'
 import { NewSessionUseCase } from '../usecases/new-session.usecase'
 
-export const NewSessionDTO = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
+export const NewSessionDTO = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
 })
 
 export async function NewSessionController(req: Request, res: Response) {

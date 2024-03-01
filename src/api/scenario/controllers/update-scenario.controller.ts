@@ -1,11 +1,11 @@
 import { ok } from '@shared/http/http-responses'
 import { Request, Response } from 'express'
-import Joi from 'joi'
+import { z } from 'zod'
 import { UpdateScenarioUseCase } from '../usecases'
 
-export const UpdateScenarioDTO = Joi.object({
-  name: Joi.string().required(),
-  description: Joi.string().required(),
+export const UpdateScenarioDTO = z.object({
+  name: z.string(),
+  description: z.string(),
 })
 
 export async function UpdateScenarioController(req: Request, res: Response) {
