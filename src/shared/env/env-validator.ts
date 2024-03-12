@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/app-error.error'
 
-export function EnvValidator() {
+export function envValidator() {
   const requiredEnvVars = [
     'MONGODB_URI',
     'JWT_SECRET',

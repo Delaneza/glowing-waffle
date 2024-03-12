@@ -1,8 +1,8 @@
 import { createUserController, showUserController } from '@api/user/controllers'
 import { CreateUserDTO } from '@api/user/dtos'
 import { adaptRoute } from '@shared/http/route-adapter'
-import { BodyValidator } from '@src/middlewares/body-validator.middleware'
-import { EnsureAuthenticated } from '@src/middlewares/ensure-authenticated.middleware'
+import { bodyValidator } from '@src/middlewares/body-validator.middleware'
+import { ensureAuthenticated } from '@src/middlewares/ensure-authenticated.middleware'
 import express, { Router } from 'express'
 
 const userRoutes: Router = express.Router()
@@ -67,7 +67,7 @@ const userRoutes: Router = express.Router()
  *                   type: string
  *                   description: Tipo de erro
  */
-userRoutes.post('/', BodyValidator(CreateUserDTO), adaptRoute(createUserController))
+userRoutes.post('/', bodyValidator(CreateUserDTO), adaptRoute(createUserController))
 
 /**
  * @openapi
@@ -113,6 +113,6 @@ userRoutes.post('/', BodyValidator(CreateUserDTO), adaptRoute(createUserControll
  *                   type: string
  *                   description: Tipo de erro
  */
-userRoutes.get('/me', EnsureAuthenticated(), adaptRoute(showUserController))
+userRoutes.get('/me', ensureAuthenticated(), adaptRoute(showUserController))
 
 export { userRoutes }

@@ -1,3 +1,4 @@
+import { config } from '@shared/config'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 import cors from 'cors'
@@ -6,28 +7,19 @@ import express, { type Express } from 'express'
 import forceSSL from 'express-force-ssl'
 import helmet from 'helmet'
 import morgan from 'morgan'
-import multer from 'multer'
-
-import { config } from '@shared/config'
-
-import { EnvValidator } from '@shared/env/env-validator'
 import { routes } from './api'
-import { AppErrorHandling } from './middlewares/error-handling.middleware'
+import { appErrorHandling } from './middlewares/error-handling.middleware'
+import { envValidator } from './shared/env/env-validator'
 
 const app: Express = express()
 const env = config.env
-const upload = multer()
 
 if (env === 'production' || env === 'staging') {
-  EnvValidator()
+  envValidator()
 }
 
-/**
- * Set up middlewares
- */
-
 const possibleEnvs = {
-  DEV: 'dev',
+  DEVELOP: 'devlop',
   STAGING: 'staging',
   PRODUCTION: 'production',
 }
@@ -50,25 +42,21 @@ app.use(compression())
 app.use(morgan('dev'))
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
-app.use(upload.single('file'))
 app.disable('x-powered-by')
 
 /**
  * Set up static files and docs
  */
-
 // app.use('/docs', swaggerUi.serve, swaggerUi.setup(swagger))
 
 /**
  * Set up routes
  */
-
 app.use(routes)
 
 /**
  * Set up error handling
  */
-
-app.use(AppErrorHandling)
+app.use(appErrorHandling)
 
 export { app }

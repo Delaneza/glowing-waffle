@@ -4,10 +4,10 @@ const SEVEN_DAYS = 60 * 60 * 24 * 7
 
 export const config = {
   env: process.env.NODE_ENV ?? 'dev',
-  host: (process.env.HOST as string) ?? ('0.0.0.0' as string),
-  port: (Number(process.env.PORT) as number) ?? (9000 as number),
+  host: process.env.HOST ?? '0.0.0.0',
+  port: process.env.PORT ?? 9000,
   mongodb: {
-    uri: process.env.MONGODB_URI ?? '',
+    uri: process.env.MONGODB_URI ?? 'mongodb://mongodb:27017',
     options: {
       debug: false,
     },

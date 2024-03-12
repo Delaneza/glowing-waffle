@@ -3,7 +3,7 @@ import { AppError } from '@shared/errors/app-error.error'
 import { fail } from '@shared/http/http-responses'
 import { NextFunction, Request, Response } from 'express'
 
-export function AppErrorHandling(err: Error, _req: Request, res: Response, _next: NextFunction) {
+export function appErrorHandling(err: Error, _req: Request, res: Response, _next: NextFunction) {
   logger.error(err)
 
   if (err instanceof AppError) {

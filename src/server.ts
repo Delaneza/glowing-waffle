@@ -1,6 +1,5 @@
-import { config } from '@shared/config'
-
 import { logger } from '@services/logger/logger'
+import { config } from '@shared/config'
 import { app } from './app'
 import { mongoose } from './services/database/mongoose'
 
@@ -10,7 +9,6 @@ process.on('unhandledRejection', (reason, promise) => {
 
 process.on('uncaughtException', (error) => {
   console.error('Uncaught Exception thrown', error)
-  process.exit(1)
 })
 
 mongoose.connect(config.mongodb.uri)

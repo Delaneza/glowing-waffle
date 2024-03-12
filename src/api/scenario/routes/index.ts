@@ -1,6 +1,6 @@
 import { adaptRoute } from '@shared/http/route-adapter'
-import { BodyValidator } from '@src/middlewares/body-validator.middleware'
-import { EnsureAuthenticated } from '@src/middlewares/ensure-authenticated.middleware'
+import { bodyValidator } from '@src/middlewares/body-validator.middleware'
+import { ensureAuthenticated } from '@src/middlewares/ensure-authenticated.middleware'
 import { Router } from 'express'
 import {
   createScenarioController,
@@ -14,25 +14,25 @@ import { createScenarioDTO, deleteManyScenariosDTO, updateScenarioDTO } from '..
 
 const scenarioRoutes: Router = Router()
 
-scenarioRoutes.post('/', EnsureAuthenticated(), BodyValidator(createScenarioDTO), adaptRoute(createScenarioController))
+scenarioRoutes.post('/', ensureAuthenticated(), bodyValidator(createScenarioDTO), adaptRoute(createScenarioController))
 
-scenarioRoutes.get('/', EnsureAuthenticated(), adaptRoute(listScenariosController))
+scenarioRoutes.get('/', ensureAuthenticated(), adaptRoute(listScenariosController))
 
-scenarioRoutes.get('/:id', EnsureAuthenticated(), adaptRoute(showScenarioController))
+scenarioRoutes.get('/:id', ensureAuthenticated(), adaptRoute(showScenarioController))
 
 scenarioRoutes.put(
   '/:id',
-  EnsureAuthenticated(),
-  BodyValidator(updateScenarioDTO),
+  ensureAuthenticated(),
+  bodyValidator(updateScenarioDTO),
   adaptRoute(updateScenarioController)
 )
 
-scenarioRoutes.delete('/:id', EnsureAuthenticated(), adaptRoute(deleteScenarioController))
+scenarioRoutes.delete('/:id', ensureAuthenticated(), adaptRoute(deleteScenarioController))
 
 scenarioRoutes.post(
   '/deleteMany',
-  EnsureAuthenticated(),
-  BodyValidator(deleteManyScenariosDTO),
+  ensureAuthenticated(),
+  bodyValidator(deleteManyScenariosDTO),
   adaptRoute(deleteManyScenariosController)
 )
 

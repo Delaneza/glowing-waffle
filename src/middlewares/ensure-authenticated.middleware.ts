@@ -13,7 +13,7 @@ const TOKEN_IS_MISSING = {
   statusCode: 403,
 }
 
-export function EnsureAuthenticated() {
+export function ensureAuthenticated() {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
       const { authorization: accessToken } = req.headers

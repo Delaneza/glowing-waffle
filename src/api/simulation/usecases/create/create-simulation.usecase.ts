@@ -1,4 +1,4 @@
-import { UploadObject } from '@services/aws/aws-s3'
+import { S3Service, SQSService } from '@services/aws'
 import { conflictError, notFoundError } from '@shared/errors/default-errors.error'
 import { Scenario } from '@src/api/scenario/models'
 import { Simulation } from '../../models'
@@ -76,9 +76,23 @@ async function generateInputSimulation(data: SimulationInputObject, sendEvent: F
 
   await Simulation.findByIdAndUpdate(data.simulation, { status: 'success', result: fullObject })
 
-  //send to s3 and sqs
-  await UploadObject(data.simulationCode, fullObject)
-  // await sendToSQS(fullObject);
+  const config = {
+    bucket: 'bucket',
+    key: 'key',
+  }
+
+  const s3Service = new S3Service(config)
+  s3Service.putObject({
+    Bucket: config.bucket,
+    Key: config.key,
+    Body: JSON.stringify(fullObject),
+  })
+
+  const sqsService = new SQSService(config)
+  sqsService.sendMessage({
+    MessageBody: JSON.stringify(fullObject),
+    QueueUrl: 'queueUrl',
+  })
 
   sendEvent({ status: 'success', result: fullObject })
   closeConnection()
