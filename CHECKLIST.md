@@ -30,7 +30,7 @@
 
 [X] - sonar no docker
 
-[X] - migrações
+[ ] - migrações
 
 [ ] - avaliar exportação centralizada dos tipos da aplicação
 
