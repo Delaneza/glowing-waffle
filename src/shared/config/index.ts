@@ -28,4 +28,6 @@ export const config = {
   region: requireProcessEnv('REGION'),
   accessKeyId: requireProcessEnv('ACCESS_KEY_ID'),
   secretAccessKey: requireProcessEnv('SECRET_ACCESS_KEY'),
+  masterKey: requireProcessEnv('MASTER_KEY'),
+  jwtSecret: requireProcessEnv('JWT_SECRET'),
 }
