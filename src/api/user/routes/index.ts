@@ -1,8 +1,8 @@
 import { createUserController, showUserController } from '@api/user/controllers'
 import { CreateUserDTO } from '@api/user/dtos'
-import { adaptRoute } from '@shared/http/route-adapter'
-import { bodyValidator } from '@src/middlewares/body-validator.middleware'
-import { ensureAuthenticated } from '@src/middlewares/ensure-authenticated.middleware'
+import { adaptRoute } from '@middlewares/adapt-route.middleware'
+import { bodyValidator } from '@middlewares/body-validator.middleware'
+import { ensureAuthenticated } from '@middlewares/ensure-authenticated.middleware'
 import express, { Router } from 'express'
 
 const userRoutes: Router = express.Router()

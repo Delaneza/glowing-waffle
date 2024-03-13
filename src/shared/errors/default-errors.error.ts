@@ -1,4 +1,4 @@
-import { AppError } from './app-error.error'
+import { AppError } from './app-error.class'
 
 export function notFoundError(entity: string, id: string, message?: string) {
   const entityCapitalized = capitalize(entity)

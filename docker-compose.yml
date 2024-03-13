@@ -6,8 +6,8 @@ services:
     build: .
     command: npm run start:dev
     ports:
-      - '9000:9000'
-      - '9229:9229'
+      - 9000:9000
+      - 9229:9229
     volumes:
       - .:/app
     depends_on:
@@ -19,45 +19,9 @@ services:
           memory: 3072M
 
   mongodb:
-    image: mongo:6
+    image: mongo:7
     container_name: mongodb
-    restart: always
     ports:
-      - '27017:27017'
+      - 27017:27017
     volumes:
-      - ./docker/mongodb:/data/db
-#   sonarqube:
-#     image: sonarqube:latest
-#     container_name: sonarqube
-#     ports:
-#       - '3000:9000'
-#     environment:
-#       - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
-#       - SONARQUBE_JDBC_USERNAME=sonar
-#       - SONARQUBE_JDBC_PASSWORD=sonarpass
-#     depends_on:
-#       - db
-#     volumes:
-#       - sonarqube_data:/opt/sonarqube/data
-#       - sonarqube_extensions:/opt/sonarqube/extensions
-#       - sonarqube_logs:/opt/sonarqube/logs
-#       - sonarqube_temp:/opt/sonarqube/temp
-
-#   db:
-#     image: postgres:latest
-#     container_name: sonarqube_db
-#     environment:
-#       - POSTGRES_USER=sonar
-#       - POSTGRES_PASSWORD=sonarpass
-#       - POSTGRES_DB=sonar
-#     volumes:
-#       - postgresql:/var/lib/postgresql
-#       - postgresql_data:/var/lib/postgresql/data
-
-# volumes:
-#   sonarqube_data:
-#   sonarqube_extensions:
-#   sonarqube_logs:
-#   sonarqube_temp:
-#   postgresql:
-#   postgresql_data:
+      - ./mongodb:/data/db

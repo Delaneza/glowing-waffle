@@ -1,4 +1,4 @@
-import { AppError } from '@shared/errors/app-error.error'
+import { AppError } from '@shared/errors/app-error.class'
 import { User } from '../../models'
 import { UserDocument } from '../../models/user.model'
 

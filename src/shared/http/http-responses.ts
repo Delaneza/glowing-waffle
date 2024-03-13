@@ -1,8 +1,8 @@
-import { AppError } from '@shared/errors/app-error.error'
+import { AppError } from '@shared/errors/app-error.class'
 import { Response } from 'express'
 
-export function ok<T>(res: Response, dto?: T) {
-  return res.status(200).json(dto)
+export function ok<T>(res: Response, result?: T) {
+  return res.status(200).json(result)
 }
 
 export function noContent<T>(res: Response, result?: T) {

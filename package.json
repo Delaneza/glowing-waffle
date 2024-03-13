@@ -6,10 +6,10 @@
   "scripts": {
     "build": "tsc && tsc-alias -p tsconfig.json",
     "services:install": "docker compose run app npm install",
-    "services:up": "docker compose up app && docker compose up mongodb -d",
+    "services:up": "docker compose up app mongodb",
     "services:stop": "docker compose stop",
     "services:down": "docker compose down",
-    "services:sonar": "docker compose up sonarqube db -d && node sonarqube-scanner.js",
+    "services:test": "docker compose run app npm run test:w",
     "start": "npm run build && node dist/server.js",
     "start:dev": "tsx watch --inspect=0.0.0.0:9229 src/server.ts",
     "test": "jest --config ./jest.config.js",
@@ -18,8 +18,7 @@
     "test:e2e": "jest --config ./jest-e2e.config.js",
     "prepare": "husky",
     "lint": "eslint . --ext .ts --fix",
-    "format": "prettier --write '**/*.ts'",
-    "sonar": "node sonarqube-scanner.js"
+    "format": "prettier --write '**/*.ts'"
   },
   "keywords": [],
   "author": "",
@@ -80,7 +79,6 @@
     "express": "^4.18.3",
     "express-force-ssl": "^0.3.2",
     "helmet": "^7.1.0",
-    "joi": "^17.12.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.1",
     "morgan": "^1.10.0",

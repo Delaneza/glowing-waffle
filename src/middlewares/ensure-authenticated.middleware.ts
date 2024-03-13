@@ -1,4 +1,4 @@
-import { AppError } from '@shared/errors/app-error.error'
+import { AppError } from '@shared/errors/app-error.class'
 import { forbidden } from '@shared/http/http-responses'
 import { NextFunction, Request, Response } from 'express'
 import { decode } from 'jsonwebtoken'

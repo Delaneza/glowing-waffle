@@ -2,9 +2,9 @@ import { scenarioRoutes } from '@api/scenario/routes'
 import { sessionRoutes } from '@api/session/routes'
 import { simulationRoutes } from '@api/simulation/routes'
 import { userRoutes } from '@api/user/routes'
-import express, { Router } from 'express'
+import { Router } from 'express'
 
-const routes: Router = express.Router()
+const routes: Router = Router()
 
 routes.use('/users', userRoutes)
 routes.use('/auth', sessionRoutes)

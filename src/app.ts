@@ -1,30 +1,25 @@
+import { appErrorHandling } from '@middlewares/error-handling.middleware'
 import { config } from '@shared/config'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 import cors from 'cors'
-import 'dotenv/config'
-import express, { type Express } from 'express'
+import express, { Express } from 'express'
 import forceSSL from 'express-force-ssl'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { routes } from './api'
-import { appErrorHandling } from './middlewares/error-handling.middleware'
-import { envValidator } from './shared/env/env-validator'
 
 const app: Express = express()
 const env = config.env
 
-if (env === 'production' || env === 'staging') {
-  envValidator()
-}
-
 const possibleEnvs = {
+  LOCAL: 'local',
   DEVELOP: 'devlop',
   STAGING: 'staging',
   PRODUCTION: 'production',
 }
 
-const isForceSSL = !!(env === possibleEnvs.PRODUCTION || env === possibleEnvs.STAGING)
+const isForceSSL = env !== possibleEnvs.LOCAL
 
 if (isForceSSL) {
   app.set('forceSSLOptions', {
@@ -36,6 +31,9 @@ if (isForceSSL) {
   app.use(forceSSL)
 }
 
+/**
+ * Set up middleware
+ */
 app.use(cors())
 app.use(helmet())
 app.use(compression())
