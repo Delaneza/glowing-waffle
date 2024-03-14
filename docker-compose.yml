@@ -21,6 +21,7 @@ services:
   mongodb:
     image: mongo:7
     container_name: mongodb
+    attach: false # desabilita os logs do container no terminal
     ports:
       - 27017:27017
     volumes:

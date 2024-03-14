@@ -1,3 +1,3 @@
-import { User, roles, userSchema } from './user.model'
+import User, { roles, userSchema } from './user.model'
 
 export { User, roles, userSchema }

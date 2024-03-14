@@ -1,4 +1,4 @@
-import { Sign } from '@services/auth/jwt'
+import { sign } from '@services/auth/jwt'
 import { invalidCredentialsError } from '@shared/errors/default-errors.error'
 import { User } from '@src/api/user/models'
 
@@ -21,7 +21,7 @@ export async function newSessionUseCase(data: NewSessionDTO) {
     throw invalidCredentialsError()
   }
 
-  const token = await Sign(user.id)
+  const token = await sign(user.id)
 
   return { token, user: user.view(false) }
 }

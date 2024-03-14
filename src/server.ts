@@ -1,4 +1,5 @@
-import { logger } from '@services/logger/logger'
+import { seedDatabase } from '@services/database/mongoose/seeds'
+import { scheduleAllJobs } from '@services/scheduler'
 import { config } from '@shared/config'
 import { app } from './app'
 import { mongoose } from './services/database/mongoose'
@@ -13,6 +14,9 @@ process.on('uncaughtException', (error) => {
 
 mongoose.connect(config.mongodb.uri)
 
-app.listen(config.port, config.host, () => {
-  logger.info(`Server running on ${config.host}:${config.port} in ${config.env} mode`)
+app.listen(Number(config.port), config.host, () => {
+  console.log(`Server running on ${config.host}:${config.port} in ${config.env} mode`)
+  // logger.info(`Server running on ${config.host}:${config.port} in ${config.env} mode`)
+  seedDatabase()
+  scheduleAllJobs()
 })

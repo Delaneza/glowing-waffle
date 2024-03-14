@@ -49,5 +49,4 @@ export class S3Service {
     console.log('Objetos listados com sucesso!', paramsS3.Bucket)
     return data
   }
-
 }
