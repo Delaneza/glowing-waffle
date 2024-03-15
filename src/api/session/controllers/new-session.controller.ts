@@ -5,6 +5,8 @@ import { newSessionUseCase } from '../usecases'
 
 export async function newSessionController(req: Request, res: Response) {
   const { email, password } = req.body
+  
+  
 
   const { token, user } = await newSessionUseCase({ email, password })
 

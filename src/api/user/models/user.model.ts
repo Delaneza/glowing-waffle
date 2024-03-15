@@ -1,5 +1,7 @@
+import { config } from '@src/shared/config'
 import bcrypt from 'bcrypt'
 import { Schema, model } from 'mongoose'
+const env = config.env
 
 export const roles: string[] = ['user', 'admin', 'planner', 'application']
 
@@ -24,6 +26,23 @@ export const userSchema = new Schema<UserDocument>(
   },
   { timestamps: true }
 )
+
+userSchema.pre('save', function (next) {
+  if (!this.isModified('password')) {
+    return next()
+  }
+  /* istanbul ignore next */
+
+  const rounds = env === 'test' ? 1 : 9
+  console.log('rounds', rounds)
+  bcrypt
+    .hash(this.password, rounds)
+    .then((hash) => {
+      this.password = hash
+      next()
+    })
+    .catch(next)
+})
 
 userSchema.methods = {
   view(full: boolean) {

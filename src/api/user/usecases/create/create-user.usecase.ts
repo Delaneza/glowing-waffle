@@ -10,7 +10,7 @@ export type CreateUserDTO = {
 
 export async function createUserUseCase(data: CreateUserDTO): Promise<UserDocument> {
   const userAlreadyExists = await User.findOne({ email: data.email })
-
+  
   if (userAlreadyExists) {
     throw new AppError({
       message: `User already exists with email: '${data.email}'`,

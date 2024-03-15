@@ -7,7 +7,7 @@ type SendEventData = {
 }
 
 export async function createSimulationController(req: Request, res: Response) {
-  const { userId: user } = req
+  const { user } = req
   const { scenario, reference_month, simulation_cd_id } = req.body
 
   setSSEHeaders(res)

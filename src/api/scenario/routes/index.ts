@@ -14,24 +14,29 @@ import { createScenarioDTO, deleteManyScenariosDTO, updateScenarioDTO } from '..
 
 const scenarioRoutes: Router = Router()
 
-scenarioRoutes.post('/', ensureAuthenticated(), bodyValidator(createScenarioDTO), adaptRoute(createScenarioController))
+scenarioRoutes.post(
+  '/',
+  ensureAuthenticated({ required: true }),
+  bodyValidator(createScenarioDTO),
+  adaptRoute(createScenarioController)
+)
 
-scenarioRoutes.get('/', ensureAuthenticated(), adaptRoute(listScenariosController))
+scenarioRoutes.get('/', ensureAuthenticated({ required: true }), adaptRoute(listScenariosController))
 
-scenarioRoutes.get('/:id', ensureAuthenticated(), adaptRoute(showScenarioController))
+scenarioRoutes.get('/:id', ensureAuthenticated({ required: true }), adaptRoute(showScenarioController))
 
 scenarioRoutes.put(
   '/:id',
-  ensureAuthenticated(),
+  ensureAuthenticated({ required: true }),
   bodyValidator(updateScenarioDTO),
   adaptRoute(updateScenarioController)
 )
 
-scenarioRoutes.delete('/:id', ensureAuthenticated(), adaptRoute(deleteScenarioController))
+scenarioRoutes.delete('/:id', ensureAuthenticated({ required: true }), adaptRoute(deleteScenarioController))
 
 scenarioRoutes.post(
   '/deleteMany',
-  ensureAuthenticated(),
+  ensureAuthenticated({ required: true }),
   bodyValidator(deleteManyScenariosDTO),
   adaptRoute(deleteManyScenariosController)
 )

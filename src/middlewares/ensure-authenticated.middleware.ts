@@ -1,7 +1,7 @@
-import { AppError } from '@shared/errors/app-error.class'
-import { forbidden } from '@shared/http/http-responses'
+import { roles } from '@api/user/models'
 import { NextFunction, Request, Response } from 'express'
-import { decode } from 'jsonwebtoken'
+import passport from 'passport'
+import z from 'zod'
 
 type DecodedJwt = {
   id: string
@@ -13,34 +13,39 @@ const TOKEN_IS_MISSING = {
   statusCode: 403,
 }
 
-export function ensureAuthenticated() {
+const AuthErrorSchema = z.object({
+  message: z.string(),
+})
+
+interface IUser {
+  email: string
+  password: string
+  role: 'admin' | 'user'
+  active: boolean
+}
+
+interface ITokenOptions {
+  required: boolean
+  Iroles?: string[]
+}
+
+export function ensureAuthenticated({ required, Iroles = roles }: ITokenOptions) {
   return (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const { authorization: accessToken } = req.headers
-      const token = accessToken?.split(' ')[1]
-
-      if (!token) {
-        return forbidden(res, new AppError(TOKEN_IS_MISSING))
-      }
-
+    passport.authenticate('token', { session: false }, (err: Error, user: IUser, info: string) => {
       try {
-        const decoded = decode(token) as DecodedJwt
+        if (err || (required && !user) || (required && !Iroles.includes(user.role)) || !user.active) {
+          const authError = AuthErrorSchema.safeParse({ message: err.message })
+          if (!authError.success) throw new Error('Token expirado')
+        }
 
-        req.userId = decoded.id
-
-        return next()
-      } catch (err) {
-        console.error(err)
-
-        return res.status(403).json({
-          message: 'Invalid token',
-          name: 'Unauthorized',
-          statusCode: 403,
+        return req.logIn(user, { session: false }, (err: Error) => {
+          if (err) return res.status(401).end()
+          return next()
         })
+      } catch (error) {
+        next(error)
       }
-    } catch (error) {
-      return next(error)
-    }
+    })(req, res, next)
   }
 }
 
