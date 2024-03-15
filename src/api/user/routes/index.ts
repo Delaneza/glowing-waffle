@@ -113,6 +113,6 @@ userRoutes.post('/', bodyValidator(CreateUserDTO), adaptRoute(createUserControll
  *                   type: string
  *                   description: Tipo de erro
  */
-userRoutes.get('/me', ensureAuthenticated(), adaptRoute(showUserController))
+userRoutes.get('/me', ensureAuthenticated({ required: true }), adaptRoute(showUserController))
 
 export { userRoutes }

@@ -9,13 +9,13 @@ const simulationRoutes: Router = Router()
 
 simulationRoutes.post(
   '/',
-  ensureAuthenticated(),
+  ensureAuthenticated({ required: true }),
   bodyValidator(CreateSimulationDTO),
   adaptRoute(createSimulationController)
 )
 
-simulationRoutes.get('/', ensureAuthenticated(), adaptRoute(listSimulationsController))
+simulationRoutes.get('/', ensureAuthenticated({ required: true }), adaptRoute(listSimulationsController))
 
-simulationRoutes.get('/:id', ensureAuthenticated(), adaptRoute(showSimulationController))
+simulationRoutes.get('/:id', ensureAuthenticated({ required: true }), adaptRoute(showSimulationController))
 
 export { simulationRoutes }

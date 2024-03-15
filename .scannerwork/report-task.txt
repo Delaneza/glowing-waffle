@@ -1,0 +1,6 @@
+projectKey=vli-refactor
+serverUrl=http://localhost:9001
+serverVersion=10.4.1.88267
+dashboardUrl=http://localhost:9001/dashboard?id=vli-refactor
+ceTaskId=d8af9005-7fd2-427d-be1f-b909cbce7998
+ceTaskUrl=http://localhost:9001/api/ce/task?id=d8af9005-7fd2-427d-be1f-b909cbce7998

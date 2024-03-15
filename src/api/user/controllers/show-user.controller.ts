@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { showUserUseCase } from '../usecases'
 
 export async function showUserController(req: Request, res: Response) {
-  const { userId: id } = req
+  const { user: id } = req
 
   const user = await showUserUseCase(id)
 
