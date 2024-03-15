@@ -31,10 +31,8 @@ export async function listSimulationsUseCase(input: ListSimulationsInput): Promi
       if (field === 'name') {
         return { ...acc, [field]: { $regex: input[field] || '', $options: 'i' } }
       }
-
       return { ...acc, [field]: input[field] }
     }
-
     return acc
   }, {})
 

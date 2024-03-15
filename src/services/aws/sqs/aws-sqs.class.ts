@@ -27,14 +27,14 @@ export class SQSService {
   }
 
   async receiveMessage(paramsSQS: ReceiveMessageCommandInput): Promise<ReceiveMessageCommandOutput> {
-    const command= new ReceiveMessageCommand(paramsSQS)
+    const command = new ReceiveMessageCommand(paramsSQS)
     const data = await this.sqs.send(command)
     console.log('Mensagem recebida da fila com sucesso!')
     return data
   }
 
   async deleteMessage(paramsSQS: DeleteMessageCommandInput): Promise<DeleteMessageCommandOutput> {
-    const command= new DeleteMessageCommand(paramsSQS)
+    const command = new DeleteMessageCommand(paramsSQS)
     const data = await this.sqs.send(command)
     console.log('Mensagem deletada da fila com sucesso!')
     return data

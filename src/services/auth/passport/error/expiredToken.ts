@@ -1,4 +1,4 @@
-import { CustomError} from "./customError";
+import { CustomError } from './customError'
 
 export class ExpiredTokenError extends CustomError {
   constructor() {

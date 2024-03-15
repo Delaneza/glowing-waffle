@@ -6,7 +6,7 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
-      "source.organizeImports": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "[javascript]": {
@@ -14,7 +14,7 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
-      "source.organizeImports": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "[json]": {
@@ -22,5 +22,5 @@
     "editor.formatOnSave": true
   },
   "editor.formatOnSaveMode": "file",
-  "git.autofetch": true,
+  "git.autofetch": true
 }
