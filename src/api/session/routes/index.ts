@@ -7,6 +7,6 @@ import { NewSessionDTO } from '../dtos'
 
 const sessionRoutes: Router = express.Router()
 
-sessionRoutes.post('/', bodyValidator(NewSessionDTO)/* , password */, adaptRoute(newSessionController))
+sessionRoutes.post('/', password(), adaptRoute(newSessionController))
 
 export { sessionRoutes }
