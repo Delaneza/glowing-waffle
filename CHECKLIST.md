@@ -20,7 +20,7 @@
 
 [ ] - project workspace (n prioritario)
 
-[ ] - !config midd de authenticação com o passport
+[X] - !config midd de authenticação com o passport
 
 [ ] - querymen
 

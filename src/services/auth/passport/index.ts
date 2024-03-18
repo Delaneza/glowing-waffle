@@ -5,53 +5,41 @@ import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
 import { z } from 'zod'
 import { User } from '../../../api/user/models'
 import { config } from '../../../shared/config/index'
+import { Schema } from 'mongoose'
 
 const masterKey = config.masterKey
 const jwtSecret = config.jwtSecret
 const sessionTimeout = config.sessionTimeout
 
-interface IUser {
-  email: string
-  password: string
-  role: 'admin' | 'user'
-  active: boolean
-}
-
-interface ITokenOptions {
-  required: boolean
-  role: string[]
-}
-
-const UserSchema = z.object({
-  email: z.string(),
-  password: z.string(),
-  role: z.enum(['user', 'planner', 'application']),
-})
-
-const AuthErrorSchema = z.object({
-  message: z.string(),
-})
-
-
-
 export const initializePassportStrategies = () => {
   passport.use(
     'password',
     new BasicStrategy(async (email: string, password: string, done) => {
+
+      const schema = z.object({
+        email: z.string().email(),
+        password: z.string().min(6)
+      })
+  
+      const result = schema.safeParse({ email, password })
+      if (!result.success) {
+        done(result.error)
+        return null
+      }
+
       const user = await User.findOne({ email: email })
 
       if (!user) {
         done(null, false)
         return null
       }
-      const result = await user.authenticate(password)
+      const authenticate = await user.authenticate(password)
 
-      if (result) {
+      if (authenticate) {
         done(null, user)
       } else {
         done(null, false)
       }
-      return null
     })
   )
 

@@ -27,21 +27,18 @@ export const userSchema = new Schema<UserDocument>(
   { timestamps: true }
 )
 
-userSchema.pre('save', function (next) {
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next()
   }
-  /* istanbul ignore next */
-
-  const rounds = env === 'test' ? 1 : 9
-  console.log('rounds', rounds)
-  bcrypt
-    .hash(this.password, rounds)
-    .then((hash) => {
-      this.password = hash
-      next()
-    })
-    .catch(next)
+  try {
+    const rounds = env === 'test' ? 1 : 10
+    const hash = await bcrypt.hash(this.password, rounds)
+    this.password = hash
+    next()
+  } catch (err) {
+    next(err)
+  }
 })
 
 userSchema.methods = {
