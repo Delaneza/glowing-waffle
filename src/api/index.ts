@@ -6,8 +6,8 @@ import { Router } from 'express'
 
 const routes: Router = Router()
 
-routes.use('/users', userRoutes)
 routes.use('/auth', authRoutes)
+routes.use('/users', userRoutes)
 routes.use('/scenarios', scenarioRoutes)
 routes.use('/simulations', simulationRoutes)
 

@@ -12,7 +12,7 @@
     "services:down": "docker compose down",
     "services:test": "docker compose run app npm run test:w",
     "start": "npm run build && node dist/src/server.js",
-    "start:dev": "tsx watch --clear-screen=false --inspect=0.0.0.0:9229 src/server.ts",
+    "start:dev": "tsx watch --clear-screen=false --nolazy --inspect=0.0.0.0:9229 src/server.ts",
     "test": "jest --config ./jest.config.js",
     "test:w": "jest --watch --config ./jest.config.js --detectOpenHandles",
     "test:c": "jest --coverage --config ./jest.config.js",
