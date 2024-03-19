@@ -25,7 +25,7 @@ scenarioRoutes.post(
 
 const reqSchema = {
     name: {
-      type: String,
+      type: [RegExp],
     },
 
 }

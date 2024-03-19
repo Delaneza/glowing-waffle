@@ -9,25 +9,17 @@ type Cursor = {
 }
 
 export type ListScenariosInput = {
-  name?: string
-  description?: string
+  query?: string
+  select?: string
   cursor: Cursor
 }
 
-export async function listScenariosUseCase(input: ListScenariosInput): Promise<ScenarioDocument[]> {
-  const { cursor, name, description } = input
-  const { page = 1, limit = 10, sort = 'createdAt', order = 'desc' } = cursor
+export async function listScenariosUseCase(input): Promise<{ count: number; rows: Array<ScenarioDocument> }> {
+  const { query, select, cursor } = input
+  const [count, scenarios] = await Promise.all([Scenario.countDocuments(query), Scenario.find(query, select, cursor)])
 
-  const skip = (page - 1) * limit
-
-  const query = {
-    name: { $regex: name || '', $options: 'i' },
-    description: { $regex: description || '', $options: 'i' },
+  return {
+    count,
+    rows: scenarios.map((scenario) => scenario.view(false)),
   }
-
-  const sortQuery = { sort: { [sort]: order === 'desc' ? -1 : 1 } }
-
-  const scenarios = await Scenario.find(query, {}, sortQuery).skip(skip).limit(limit).exec()
-
-  return scenarios.map((scenario) => scenario.view(false))
 }
