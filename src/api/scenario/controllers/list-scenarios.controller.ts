@@ -7,18 +7,13 @@ export async function listScenariosController(
   res: Response,
   next: NextFunction
 ) {
-  const { name, description } = query
 
   console.log('query', query)
   console.log('params', params)
   console.log('cursor', cursor)
   console.log('select', select)
 
-  const scenarios = await listScenariosUseCase({
-    name: name as string,
-    description: description as string,
-    cursor: cursor || {},
-  })
+  const result = await listScenariosUseCase({ query, select, cursor })
 
-  return ok(res, scenarios)
+  return ok(res, result)
 }
