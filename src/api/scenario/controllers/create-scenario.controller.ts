@@ -4,9 +4,11 @@ import { createScenarioUseCase } from '../usecases'
 
 export async function createScenarioController(req: Request, res: Response) {
   const { name, description } = req.body
-  const { user: user } = req
+  const {
+    user: { id },
+  } = req
 
-  const scenario = await createScenarioUseCase({ user, name, description })
+  const scenario = await createScenarioUseCase({ user: id, name, description })
 
   return created(res, scenario)
 }

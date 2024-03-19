@@ -14,6 +14,8 @@ import { createScenarioDTO, deleteManyScenariosDTO, updateScenarioDTO } from '..
 
 const scenarioRoutes: Router = Router()
 
+import {middleware as query} from 'querymen'
+
 scenarioRoutes.post(
   '/',
   ensureAuthenticated({ required: true }),
@@ -21,9 +23,16 @@ scenarioRoutes.post(
   adaptRoute(createScenarioController)
 )
 
-scenarioRoutes.get('/', ensureAuthenticated({ required: true }), adaptRoute(listScenariosController))
+const reqSchema = {
+    name: {
+      type: String,
+    },
 
-scenarioRoutes.get('/:id', ensureAuthenticated({ required: true }), adaptRoute(showScenarioController))
+}
+
+scenarioRoutes.get('/', ensureAuthenticated({ required: true }),query(reqSchema), adaptRoute(listScenariosController))
+
+scenarioRoutes.get('/:id', ensureAuthenticated({ required: true }),query(reqSchema), adaptRoute(showScenarioController))
 
 scenarioRoutes.put(
   '/:id',
