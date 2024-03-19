@@ -1,4 +1,4 @@
-import { User } from './user.model'
+import User from './user.model'
 
 describe('user model', () => {
   it('should return the view', async () => {

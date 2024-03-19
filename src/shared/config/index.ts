@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const requireProcessEnv = (name:string) => {
+const requireProcessEnv = (name: string) => {
   if (!process.env[name] && process.env.NODE_ENV !== 'test') {
     throw new Error('You must set the ' + name + ' environment variable')
   }

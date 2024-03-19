@@ -1,12 +1,6 @@
-import { Request, Response, NextFunction } from "express"  
-import passport from "passport"
-import z from "zod"
+import { NextFunction, Request, Response } from 'express'
+import passport from 'passport'
 
-
-
-
-
-
-function masterAthenticated(req: Request, res: Response, next: NextFunction) {
+export function masterAthenticated(req: Request, res: Response, next: NextFunction) {
   passport.authenticate('master', { session: false })
 }

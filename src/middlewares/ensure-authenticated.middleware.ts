@@ -3,16 +3,6 @@ import { NextFunction, Request, Response } from 'express'
 import passport from 'passport'
 import z from 'zod'
 
-type DecodedJwt = {
-  id: string
-}
-
-const TOKEN_IS_MISSING = {
-  message: 'Token is missing',
-  name: 'Unauthorized',
-  statusCode: 403,
-}
-
 const AuthErrorSchema = z.object({
   message: z.string(),
 })
@@ -46,11 +36,5 @@ export function ensureAuthenticated({ required, Iroles = roles }: ITokenOptions)
         next(error)
       }
     })(req, res, next)
-  }
-}
-
-export namespace AuthMiddleware {
-  export type Request = {
-    accessToken?: string
   }
 }

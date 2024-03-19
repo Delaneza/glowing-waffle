@@ -10,7 +10,6 @@ export function authenticationError(entity: string, id: string, message?: string
   })
 }
 
-
 export function AuthorizationError(entity: string, id: string, message?: string) {
   const entityCapitalized = capitalize(entity)
 
@@ -30,6 +29,5 @@ export function ExpiredTokenError(entity: string, id: string, message?: string) 
     name: `${entityCapitalized}TokenExpiredError`,
   })
 }
-
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)

@@ -1,4 +1,4 @@
-import { sign } from '@services/auth/jwt'
+import { sign } from '@services/jwt'
 
 type NewSessionDTO = {
   id: string
@@ -7,7 +7,7 @@ type NewSessionDTO = {
   view: Function
 }
 
-export async function newSessionUseCase(data: NewSessionDTO) {
+export async function newAuthUseCase(data: NewSessionDTO) {
   const token = await sign(data.id)
 
   return { token, user: data.view(false) }

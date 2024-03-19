@@ -3,9 +3,8 @@ import { BasicStrategy } from 'passport-http'
 import { Strategy as BearerStrategy } from 'passport-http-bearer'
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
 import { z } from 'zod'
-import { User } from '../../../api/user/models'
-import { config } from '../../../shared/config/index'
-import { Schema } from 'mongoose'
+import { User } from '../../api/user/models'
+import { config } from '../../shared/config/index'
 
 const masterKey = config.masterKey
 const jwtSecret = config.jwtSecret
@@ -15,12 +14,11 @@ export const initializePassportStrategies = () => {
   passport.use(
     'password',
     new BasicStrategy(async (email: string, password: string, done) => {
-
       const schema = z.object({
         email: z.string().email(),
-        password: z.string().min(6)
+        password: z.string().min(6),
       })
-  
+
       const result = schema.safeParse({ email, password })
       if (!result.success) {
         done(result.error)
@@ -33,6 +31,7 @@ export const initializePassportStrategies = () => {
         done(null, false)
         return null
       }
+
       const authenticate = await user.authenticate(password)
 
       if (authenticate) {
@@ -67,7 +66,6 @@ export const initializePassportStrategies = () => {
       },
       async ({ id, iat }, done: Function) => {
         const user = await User.findById(id)
-
         if (iat + sessionTimeout < Math.floor(new Date().getTime() / 1000)) {
           done(440, false)
         } else {
