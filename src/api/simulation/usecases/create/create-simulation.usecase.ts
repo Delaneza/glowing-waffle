@@ -1,6 +1,6 @@
+import { Scenario } from '@api/scenario/models'
 import { S3Service, SQSService } from '@services/aws'
 import { conflictError, notFoundError } from '@shared/errors/default-errors.error'
-import { Scenario } from '@src/api/scenario/models'
 import { Simulation } from '../../models'
 
 export type CreateSimulationInput = {

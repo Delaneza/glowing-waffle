@@ -1,7 +1,7 @@
+import { authRoutes } from '@api/auth/routes'
 import { scenarioRoutes } from '@api/scenario/routes'
 import { simulationRoutes } from '@api/simulation/routes'
 import { userRoutes } from '@api/user/routes'
-import { authRoutes } from '@src/api/auth/routes'
 import { Router } from 'express'
 
 const routes: Router = Router()

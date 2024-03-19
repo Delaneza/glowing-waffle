@@ -1,5 +1,5 @@
+import { UserDocument } from '@api/user/models/user.model'
 import { ok } from '@shared/http/http-responses'
-import { UserDocument } from '@src/api/user/models/user.model'
 import { Request, Response } from 'express'
 import { newAuthUseCase } from '../usecases'
 

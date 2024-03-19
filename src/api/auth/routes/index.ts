@@ -1,5 +1,5 @@
 import { adaptRoute } from '@middlewares/adapt-route.middleware'
-import { password } from '@src/middlewares/password.authenticated.middleware'
+import { password } from '@middlewares/password-authenticated.middleware'
 import express, { Router } from 'express'
 import { newAuthController } from '../controllers'
 

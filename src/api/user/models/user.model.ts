@@ -1,4 +1,4 @@
-import { config } from '@src/shared/config'
+import { config } from '@shared/config'
 import bcrypt from 'bcrypt'
 import { Schema, model } from 'mongoose'
 const env = config.env
