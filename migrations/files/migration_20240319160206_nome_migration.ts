@@ -1,6 +1,6 @@
 // import Corridor from '../src/api/corridor/model.js' // import example model
 
-const ready = false
+const ready = true
 
 export async function up() {
   if (ready) {
