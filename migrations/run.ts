@@ -1,11 +1,37 @@
-const { Command } = require('commander')
+import * as fs from 'fs'
+import * as path from 'path'
+import Migration from './model'
 
-const program = new Command()
+export function run(migration: string) {
+  console.log('Running migration...')
 
-program.arguments('<migration> <environment> <development>').description('Generate a new migration').action(run)
-
-function run(migration: string) {
-  console.log('Running migrations...')
+  const migrationExecuted = runMigration(migration)
 }
 
-program.parse(process.argv)
+async function runMigration(migration: string) {
+  const filePath = path.resolve(__dirname, 'files', migration)
+  console.log('filePath:', filePath)
+
+  if (!fs.existsSync(`${filePath}.ts`)) {
+    console.error('Migration not found')
+
+    return
+  }
+
+  const executed = await executeMigration(filePath)
+  
+
+  if (executed === 'success') {
+    const migrationSaved = await Migration.create({ migration, status: true, enviroment: 'development' })
+    console.log('Migration executed successfully')
+  }
+
+  console.log('Migration executeda:', migration)
+}
+
+async function executeMigration(filePath: string) {
+  const { up } = await import(filePath)
+  const statusMigration = await up()
+  return statusMigration
+
+}
