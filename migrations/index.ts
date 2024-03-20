@@ -3,6 +3,7 @@ const program = new Command()
 
 import { generate } from './generate'
 import { run } from './run'
+import { runAll } from './runAll'
 
 /**
  * -------------------------------------------------------------------
@@ -17,6 +18,6 @@ import { run } from './run'
 //program.arguments('create <migration>' '<run>').description('Generate a new migration').action(generate)
 program.command('create <migration> <teste>' ).description('Generate a new migration').action(generate)
 program.command('run <migration>  <development>').description('Run migration').action(run)
-
+program.command('run-all <migration>  <development>').description('Run migration').action(runAll)
 
 program.parse(process.argv)
