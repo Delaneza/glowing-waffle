@@ -2,6 +2,7 @@ import { adaptRoute } from '@middlewares/adapt-route.middleware'
 import { bodyValidator } from '@middlewares/body-validator.middleware'
 import { ensureAuthenticated } from '@middlewares/ensure-authenticated.middleware'
 import { Router } from 'express'
+import { middleware as query } from 'querymen'
 import {
   createScenarioController,
   deleteManyScenariosController,
@@ -14,8 +15,6 @@ import { createScenarioDTO, deleteManyScenariosDTO, updateScenarioDTO } from '..
 
 const scenarioRoutes: Router = Router()
 
-import {middleware as query} from 'querymen'
-
 scenarioRoutes.post(
   '/',
   ensureAuthenticated({ required: true }),
@@ -24,15 +23,14 @@ scenarioRoutes.post(
 )
 
 const reqSchema = {
-    name: {
-      type: [RegExp],
-    },
-
+  name: {
+    type: [RegExp],
+  },
 }
 
-scenarioRoutes.get('/', ensureAuthenticated({ required: true }),query(reqSchema), adaptRoute(listScenariosController))
+scenarioRoutes.get('/', ensureAuthenticated({ required: true }), query(reqSchema), adaptRoute(listScenariosController))
 
-scenarioRoutes.get('/:id', ensureAuthenticated({ required: true }),query(reqSchema), adaptRoute(showScenarioController))
+scenarioRoutes.get('/:id', ensureAuthenticated({ required: true }), adaptRoute(showScenarioController))
 
 scenarioRoutes.put(
   '/:id',

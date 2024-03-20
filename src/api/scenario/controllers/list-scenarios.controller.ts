@@ -7,7 +7,6 @@ export async function listScenariosController(
   res: Response,
   next: NextFunction
 ) {
-
   console.log('query', query)
   console.log('params', params)
   console.log('cursor', cursor)

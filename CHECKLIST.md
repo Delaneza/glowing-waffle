@@ -1,3 +1,5 @@
+# Checklist
+
 [X] - middleware para validação dos dados do body/query
 
 [X] - configurar jest
@@ -22,9 +24,11 @@
 
 [X] - !config midd de authenticação com o passport
 
-[ ] - querymen
+[X] - querymen
 
-[ ] - schedules de exemplo
+[X] - schedules de exemplo
+
+[X] - debugger
 
 [ ] - compartilhar coverage do projeto com o sonar [instambul]
 

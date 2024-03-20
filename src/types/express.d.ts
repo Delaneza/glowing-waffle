@@ -1,5 +1,3 @@
-// types.d.ts
-
 declare namespace Express {
   interface ISelect {
     [key: string]: string
@@ -28,8 +26,8 @@ declare namespace Express {
   }
 
   export interface Request {
-    user: UserDocument | string
     logIn(user: any, options: any, callback: (err: Error) => void): void
+    user: UserDocument | string
     querymen: Querymen
     params: IParams
   }

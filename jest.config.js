@@ -17,6 +17,7 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
     '<rootDir>/coverage/',
+    '<rootDir>/mongodb/',
     '<rootDir>/tmp/',
     '<rootDir>/.docker/',
   ],
