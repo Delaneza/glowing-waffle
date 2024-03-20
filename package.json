@@ -20,9 +20,7 @@
     "prepare": "husky",
     "lint": "eslint . --ext .ts --fix",
     "format": "prettier --write src tests docs migrations",
-    "migration:create": "ts-node ./migrations/generate.ts",
-    "migration:run": "ts-node ./migrations/run.ts",
-    "migration:rollback": "ts-node ./migrations/rollback.ts"
+    "migrate": "ts-node ./migrations/index.ts"
   },
   "keywords": [],
   "author": "",
