@@ -1,4 +1,4 @@
-import { Command } from './command'
+const { Command } = require('commander')
 
 const program = new Command()
 
@@ -7,7 +7,5 @@ program.arguments('<migration> <environment> <development>').description('Genera
 function run(migration: string) {
   console.log('Running migrations...')
 }
-
-
 
 program.parse(process.argv)

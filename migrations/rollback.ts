@@ -1,4 +1,4 @@
-import { Command } from './command'
+const { Command } = require('commander')
 import fs from 'fs'
 
 const program = new Command()
