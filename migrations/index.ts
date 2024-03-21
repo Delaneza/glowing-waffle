@@ -16,7 +16,7 @@ import { runAll } from './runAll'
  */
 
 //program.arguments('create <migration>' '<run>').description('Generate a new migration').action(generate)
-program.command('create <migration> <teste>' ).description('Generate a new migration').action(generate)
+program.command('create <migration>' ).description('Generate a new migration').action(generate)
 program.command('run <migration>  <development>').description('Run migration').action(run)
 program.command('run-all <migration>  <development>').description('Run migration').action(runAll)
 
