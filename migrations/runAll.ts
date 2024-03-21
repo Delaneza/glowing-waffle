@@ -34,7 +34,7 @@ async function runMigration(migration: string) {
       const executed = await executeMigration(filePath)
 
       if (executed === 'success') {
-        const migrationSaved = await Migration.create({ migration: file, status: true, enviroment: 'development' })
+        await Migration.create({ migration: file, status: true, enviroment: 'development' })
       }
       console.log('Applied migrations:', migration)
     }

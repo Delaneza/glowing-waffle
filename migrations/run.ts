@@ -6,7 +6,7 @@ import Migration from './model'
 export function run(migration: string) {
   console.log('Running  migration...')
 
-  const migrationExecuted = runMigration(migration)
+  runMigration(migration)
 }
 
 async function runMigration(migration: string) {
@@ -22,12 +22,13 @@ async function runMigration(migration: string) {
   const executed = await executeMigration(filePath)
 
   if (executed === 'success') {
-    const migrationSaved = await Migration.create({ migration, status: true, enviroment: 'development' })
+    console.log('Applied migrations:', migration)
+    await Migration.create({ migration, status: true, enviroment: 'development' })
 
-    mongoose.connection.close()
   }
-
+  
   console.log('Migration executada:', migration)
+  mongoose.connection.close()
 }
 
 async function executeMigration(filePath: string) {

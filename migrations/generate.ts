@@ -1,15 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { Command } from 'commander'
 
-
-
-
-
-export function generate(migration: string, run: string) {
+export function generate(migration: string) {
   console.log('Start generating the migration file:', migration)
-  
-  // npm run mmigrate  create nome_arquivo_migration 
+
+  // npm run mmigrate  create nome_arquivo_migration
 
   createFileMigration(migration)
 }
@@ -44,7 +39,9 @@ function createFileMigration(migration: string) {
     console.log('Migration created successfully')
   } catch (err) {
     console.error('Error creating migration', err)
+    return err
   }
+  process.exit(0)
 }
 
 function getContent(fileMigration: string) {
@@ -71,5 +68,3 @@ export async function up() {
 
 `
 }
-
-
